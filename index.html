@@ -16,7 +16,7 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <span class="text-2xl font-black bg-amber-400 text-slate-900 px-3 py-1 rounded-xl shadow">رفيق</span>
-                <span class="text-xs bg-emerald-900 px-2.5 py-1 rounded-lg">التعليم الأزهري والعام (فصول تفاعلية)</span>
+                <span class="text-xs bg-emerald-900 px-2.5 py-1 rounded-lg">التعليم الأزهري والعام (فصول تفاعلية 22 طالباً)</span>
             </div>
             <div class="flex items-center gap-2 bg-emerald-950/50 p-1.5 rounded-2xl border border-emerald-700">
                 <span class="text-xs px-2 text-emerald-200">تبديل الدور:</span>
@@ -34,7 +34,7 @@
                 <div>
                     <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">الصف الثالث الابتدائي الأزهري - الفصل الافتراضي (402)</span>
                     <h1 class="text-2xl md:text-3xl font-black mb-2">أهلاً بك يا بطل، أحمد! 🌟</h1>
-                    <p class="text-emerald-100 text-sm">أنت الآن داخل الفصل المدرسّي (22/22 طالباً حاضراً). المعلم يشرح الآن حصة القرآن والتجويد.</p>
+                    <p class="text-emerald-100 text-sm">أنت الآن داخل الفصل المدرسي (22/22 طالباً حاضراً). تابع السبورة وتفاعل مع المعلم.</p>
                 </div>
                 <div class="mt-4 md:mt-0 bg-white/10 p-4 rounded-2xl border border-white/20 text-center">
                     <span class="block text-xs text-emerald-200">حالة الحضور</span>
@@ -55,7 +55,7 @@
                         <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex justify-between items-center">
                             <div>
                                 <h4 class="font-bold text-sm text-amber-900">سؤال المعلم الحالي:</h4>
-                                <p class="text-xs text-amber-800 mt-1">ما هو المعنى المقصود بـ "الطارق" في الآية الكريمة؟</p>
+                                <p id="student-question-display" class="text-xs text-amber-800 mt-1">ما هو المعنى المقصود بـ "الطارق" في الآية الكريمة؟</p>
                             </div>
                             <button onclick="raiseHand()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition">رفع اليد للإجابة 🙋‍♂️</button>
                         </div>
@@ -91,14 +91,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                     <h3 class="font-black text-lg text-slate-800 mb-3">إدارة الفصل والشرح المباشر</h3>
-                    <p class="text-xs text-slate-500 mb-4">قم بطرح سؤال أو تعديل محتوى الحصة وإرساله للمراجعة.</p>
-                    <textarea class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب سؤالاً جديداً للطلاب أو ملاحظة على المنهج..."></textarea>
-                    <button onclick="alert('تم إرسال السؤال وإشعار الطلاب بنجاح!')" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">إرسال السؤال للفصل الآن</button>
+                    <p class="text-xs text-slate-500 mb-4">قم بطرح سؤال أو تعديل محتوى الحصة ليظهر فوراً لدى طلاب فصلك.</p>
+                    <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب سؤالاً جديداً للطلاب..."></textarea>
+                    <button onclick="sendQuestionToClass()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">إرسال السؤال للفصل الآن 🚀</button>
                 </div>
 
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                     <h3 class="font-black text-lg text-slate-800 mb-3">الطلبة الرافعون أيديهم للإجابة 🙋‍♂️</h3>
-                    <div class="space-y-2">
+                    <div id="raised-hands-list" class="space-y-2">
                         <div class="bg-emerald-50 p-3 rounded-2xl flex justify-between items-center border border-emerald-100">
                             <span class="text-xs font-bold text-emerald-900">يوسف محمد - طلب إجابة</span>
                             <button onclick="alert('تم اختيار الطالب للإجابة الصوتية!')" class="bg-emerald-600 text-white text-xs px-3 py-1.5 rounded-xl font-bold">منح الميكروفون 🎤</button>
@@ -116,15 +116,15 @@
 
             <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                 <h3 class="font-black text-lg text-slate-800 mb-4">طلبات انضمام المعلمين الجديدة</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                <div class="space-y-3" id="admin-teachers-list">
+                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100" id="teacher-request-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-800">الشيخ / إبراهيم عبد الله (تخصص أزهري شرعي)</h4>
                             <p class="text-xs text-slate-500">خبرة 8 سنوات في تدريس القرآن وأصول الدين بالمرحلة الابتدائية.</p>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="alert('تم قبول المعلم وتفعيل حسابه!')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2 rounded-xl">قبول واعتماد ✅</button>
-                            <button onclick="alert('تم رفض الطلب.')" class="bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold px-4 py-2 rounded-xl">رفض ❌</button>
+                            <button onclick="approveTeacher('teacher-request-1')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2 rounded-xl">قبول واعتماد ✅</button>
+                            <button onclick="rejectTeacher('teacher-request-1')" class="bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold px-4 py-2 rounded-xl">رفض ❌</button>
                         </div>
                     </div>
                 </div>
@@ -157,6 +157,35 @@
 
         function raiseHand() {
             alert('تم رفع يدك بنجاح! سيقوم المعلم بمنحك إذن الإجابة قريباً.');
+        }
+
+        function sendQuestionToClass() {
+            const inputVal = document.getElementById('teacher-question-input').value;
+            if(inputVal.trim() !== "") {
+                localStorage.setItem('rafiq_current_question', inputVal);
+                document.getElementById('student-question-display').innerText = inputVal;
+                alert('تم إرسال السؤال بنجاح إلى سبورة الفصل الافتراضي!');
+                document.getElementById('teacher-question-input').value = "";
+            } else {
+                alert('الرجاء كتابة السؤال أولاً.');
+            }
+        }
+
+        function approveTeacher(elementId) {
+            document.getElementById(elementId).innerHTML = '<div class="text-emerald-600 font-bold text-xs">تم الاعتماد بنجاح وتفعيل الحساب ✅</div>';
+        }
+
+        function rejectTeacher(elementId) {
+            document.getElementById(elementId).remove();
+            alert('تم رفض الطلب بنجاح.');
+        }
+
+        // استرجاع السؤال عند التحميل
+        window.onload = function() {
+            const savedQ = localStorage.getItem('rafiq_current_question');
+            if(savedQ) {
+                document.getElementById('student-question-display').innerText = savedQ;
+            }
         }
     </script>
 </body>
