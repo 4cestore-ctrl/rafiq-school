@@ -38,7 +38,7 @@
                     <p class="text-emerald-100 text-sm">أنت الآن داخل الفصل المدرسي (22/22 طالباً حاضراً).</p>
                 </div>
                 <div class="mt-4 md:mt-0 bg-white/10 p-4 rounded-2xl border border-white/20 text-center">
-                    <span class="block text-xs text-emerald-200">حالة الاتصال</span>
+                    <span class="block text-xs text-emerald-200">حالة الاتصال اللحظي</span>
                     <span class="text-lg font-bold text-amber-300">متصل سحابياً 🟢</span>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                     <h3 class="font-black text-lg text-slate-800 mb-3">إدارة الفصل والشرح المباشر</h3>
                     <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب سؤالاً جديداً للطلاب..."></textarea>
-                    <button onclick="sendQuestionToClass()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">بث السؤال عبر السحابة 🚀</button>
+                    <button onclick="sendQuestionToClass()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">بث السؤال لحظياً 🚀</button>
                 </div>
 
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
@@ -141,6 +141,16 @@
         try {
             if (typeof supabase !== 'undefined') {
                 supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                
+                // الاستماع اللحظي للأسئلة الجديدة عبر السحابة
+                supabaseClient
+                  .channel('public:classroom_questions')
+                  .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'classroom_questions' }, payload => {
+                      if(payload.new && payload.new.question_text) {
+                          document.getElementById('student-question-display').innerText = payload.new.question_text;
+                      }
+                  })
+                  .subscribe();
             }
         } catch(e) {
             console.log('وضع التشغيل المحلي نشط');
@@ -174,11 +184,15 @@
         async function sendQuestionToClass() {
             const inputVal = document.getElementById('teacher-question-input').value;
             if(inputVal.trim() !== "") {
-                document.getElementById('student-question-display').innerText = inputVal;
                 if (supabaseClient) {
-                    await supabaseClient.from('classroom_questions').insert([{ question_text: inputVal }]);
+                    const { error } = await supabaseClient.from('classroom_questions').insert([{ question_text: inputVal }]);
+                    if(error) {
+                        alert('حدث خطأ أثناء الإرسال السحابي.');
+                        return;
+                    }
                 }
-                alert('تم بث السؤال سحابياً لجميع الطلاب!');
+                document.getElementById('student-question-display').innerText = inputVal;
+                alert('تم بث السؤال لحظياً لجميع الطلاب في الفصل!');
                 document.getElementById('teacher-question-input').value = "";
             } else {
                 alert('الرجاء كتابة السؤال أولاً.');
@@ -186,7 +200,7 @@
         }
 
         function approveTeacher(id) {
-            document.getElementById(id).innerHTML = '<div class="text-emerald-600 font-bold text-xs">تم الاعتماد السحابي وتفعيل الحساب ✅</div>';
+            document.getElementById(id).innerHTML = '<div class="text-emerald-600 font-bold text-xs">تم الاعتماد اللحظي وتفعيل الحساب ✅</div>';
         }
 
         function rejectTeacher(id) {
