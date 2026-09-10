@@ -20,10 +20,10 @@
                 <span class="text-xs bg-emerald-900 px-2.5 py-1 rounded-lg">التعليم الأزهري والعام (فصول تفاعلية 22 طالباً)</span>
             </div>
             <div class="flex items-center gap-2 bg-emerald-950/50 p-1.5 rounded-2xl border border-emerald-700">
-                <span class="text-xs px-2 text-emerald-200">تبديل الدور:</span>
+                <span class="text-xs px-2 text-emerald-200">الدور الحالي:</span>
                 <button onclick="switchRole('student')" id="btn-student" class="text-xs font-bold px-3 py-1 rounded-xl bg-amber-400 text-slate-900 transition">طالب</button>
                 <button onclick="switchRole('teacher')" id="btn-teacher" class="text-xs font-bold px-3 py-1 rounded-xl text-white hover:bg-emerald-700 transition">معلم</button>
-                <button onclick="switchRole('admin')" id="btn-admin" class="text-xs font-bold px-3 py-1 rounded-xl text-white hover:bg-emerald-700 transition">مشرف (أدمن)</button>
+                <button onclick="switchRole('admin')" id="btn-admin" class="text-xs font-bold px-3 py-1 rounded-xl text-white hover:bg-emerald-700 transition">أدمن</button>
             </div>
         </div>
     </header>
@@ -35,11 +35,11 @@
                 <div>
                     <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">الصف الثالث الابتدائي الأزهري - الفصل الافتراضي (402)</span>
                     <h1 class="text-2xl md:text-3xl font-black mb-2">أهلاً بك يا بطل، أحمد! 🌟</h1>
-                    <p class="text-emerald-100 text-sm">أنت الآن داخل الفصل المدرسي (22/22 طالباً حاضراً). متصل بقاعدة البيانات السحابية.</p>
+                    <p class="text-emerald-100 text-sm">أنت الآن داخل الفصل المدرسي (22/22 طالباً حاضراً).</p>
                 </div>
                 <div class="mt-4 md:mt-0 bg-white/10 p-4 rounded-2xl border border-white/20 text-center">
-                    <span class="block text-xs text-emerald-200">حالة السحابة</span>
-                    <span class="text-lg font-bold text-amber-300">متصل آمن 🟢</span>
+                    <span class="block text-xs text-emerald-200">حالة الاتصال</span>
+                    <span class="text-lg font-bold text-amber-300">متصل سحابياً 🟢</span>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                     <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="font-black text-lg text-slate-800 border-r-4 border-emerald-600 pr-3">سبورة الفصل الحية</h3>
-                            <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">نسبة خطأ صفر (محتوى معتمد)</span>
+                            <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">نسبة خطأ صفر (معتمد)</span>
                         </div>
                         <div class="bg-slate-900 text-amber-200 p-6 rounded-2xl text-center text-xl font-bold shadow-inner mb-4">
                             "وَالسَّمَاءِ وَالطَّارِقِ • وَمَا أَدْرَاكَ مَا الطَّارِقُ"
@@ -83,23 +83,22 @@
         <div id="view-teacher" class="space-y-6 hidden">
             <div class="bg-gradient-to-r from-slate-800 to-emerald-900 rounded-3xl p-6 text-white shadow-xl flex justify-between items-center">
                 <div>
-                    <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">لوحة تحكم المعلم (معتمد من الأدمن ✅)</span>
+                    <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">لوحة تحكم المعلم (معتمد ✅)</span>
                     <h1 class="text-2xl font-black">أهلاً بك يا استاذ محمود</h1>
-                    <p class="text-slate-300 text-sm">متصل بقاعدة البيانات السحابية لإدارة الفصل (402).</p>
+                    <p class="text-slate-300 text-sm">الفصل الافتراضي (402) - 22 طالباً.</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                     <h3 class="font-black text-lg text-slate-800 mb-3">إدارة الفصل والشرح المباشر</h3>
-                    <p class="text-xs text-slate-500 mb-4">اكتب سؤالاً وسيتم حفظه فوراً في قاعدة البيانات وبثه للطلاب.</p>
                     <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب سؤالاً جديداً للطلاب..."></textarea>
                     <button onclick="sendQuestionToClass()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">بث السؤال عبر السحابة 🚀</button>
                 </div>
 
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                     <h3 class="font-black text-lg text-slate-800 mb-3">الطلبة الرافعون أيديهم للإجابة 🙋‍♂️</h3>
-                    <div id="raised-hands-list" class="space-y-2">
+                    <div class="space-y-2">
                         <div class="bg-emerald-50 p-3 rounded-2xl flex justify-between items-center border border-emerald-100">
                             <span class="text-xs font-bold text-emerald-900">يوسف محمد - طلب إجابة</span>
                             <button onclick="alert('تم اختيار الطالب للإجابة الصوتية!')" class="bg-emerald-600 text-white text-xs px-3 py-1.5 rounded-xl font-bold">منح الميكروفون 🎤</button>
@@ -112,20 +111,20 @@
         <div id="view-admin" class="space-y-6 hidden">
             <div class="bg-gradient-to-r from-amber-600 to-orange-700 rounded-3xl p-6 text-white shadow-xl">
                 <h1 class="text-2xl font-black mb-1">لوحة تحكم المشرف العام (Super Admin)</h1>
-                <p class="text-amber-100 text-sm">إدارة حسابات المعلمين السحابية وضمان نسبة خطأ صفر.</p>
+                <p class="text-amber-100 text-sm">اعتماد المعلمين الجدد ومراجعة المحتوى.</p>
             </div>
 
             <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                 <h3 class="font-black text-lg text-slate-800 mb-4">طلبات انضمام المعلمين الجديدة</h3>
                 <div class="space-y-3" id="admin-teachers-list">
-                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100" id="teacher-request-1">
+                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100" id="teacher-req-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-800">الشيخ / إبراهيم عبد الله (تخصص أزهري شرعي)</h4>
-                            <p class="text-xs text-slate-500">خبرة 8 سنوات في تدريس القرآن وأصول الدين بالمرحلة الابتدائية.</p>
+                            <p class="text-xs text-slate-500">خبرة 8 سنوات في تدريس القرآن وأصول الدين.</p>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="approveTeacher('teacher-request-1')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2 rounded-xl">قبول واعتماد ✅</button>
-                            <button onclick="rejectTeacher('teacher-request-1')" class="bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold px-4 py-2 rounded-xl">رفض ❌</button>
+                            <button onclick="approveTeacher('teacher-req-1')" class="bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-xl">قبول واعتماد ✅</button>
+                            <button onclick="rejectTeacher('teacher-req-1')" class="bg-rose-500 text-white text-xs font-bold px-4 py-2 rounded-xl">رفض ❌</button>
                         </div>
                     </div>
                 </div>
@@ -135,9 +134,8 @@
     </main>
 
     <script>
-        // إعدادات اتصال Supabase (جاهزة للتفعيل بالبيانات الخاصة بك)
-        const SUPABASE_URL = 'https://your-supabase-project.supabase.co';
-        const SUPABASE_KEY = 'your-public-anon-key';
+        const SUPABASE_URL = 'https://frtdytphvxbrjupvruzya.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZydGR5dHBodnhicmp1dnJ6dXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwNzMyMDQsImV4cCI6MjEwNDY0OTIwNH0.JwbdvOwLApjImRTUkKe4BAxwj2lGTMuYidIH3iiIVys';
         
         let supabaseClient = null;
         try {
@@ -145,7 +143,7 @@
                 supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             }
         } catch(e) {
-            console.log('وضع التخزين المؤقت المحلي نشط');
+            console.log('وضع التشغيل المحلي نشط');
         }
 
         function switchRole(role) {
@@ -170,40 +168,30 @@
         }
 
         function raiseHand() {
-            alert('تم رفع يدك بنجاح عبر السحابة! سيقوم المعلم بمنحك إذن الإجابة.');
+            alert('تم رفع اليد بنجاح! سيمنحك المعلم إذن الإجابة.');
         }
 
         async function sendQuestionToClass() {
             const inputVal = document.getElementById('teacher-question-input').value;
             if(inputVal.trim() !== "") {
-                localStorage.setItem('rafiq_current_question', inputVal);
                 document.getElementById('student-question-display').innerText = inputVal;
-                
                 if (supabaseClient) {
                     await supabaseClient.from('classroom_questions').insert([{ question_text: inputVal }]);
                 }
-                
-                alert('تم بث السؤال سحابياً وإشعاره لجميع الطلاب في الفصل!');
+                alert('تم بث السؤال سحابياً لجميع الطلاب!');
                 document.getElementById('teacher-question-input').value = "";
             } else {
                 alert('الرجاء كتابة السؤال أولاً.');
             }
         }
 
-        function approveTeacher(elementId) {
-            document.getElementById(elementId).innerHTML = '<div class="text-emerald-600 font-bold text-xs">تم الاعتماد سحابياً وتفعيل الحساب ✅</div>';
+        function approveTeacher(id) {
+            document.getElementById(id).innerHTML = '<div class="text-emerald-600 font-bold text-xs">تم الاعتماد السحابي وتفعيل الحساب ✅</div>';
         }
 
-        function rejectTeacher(elementId) {
-            document.getElementById(elementId).remove();
+        function rejectTeacher(id) {
+            document.getElementById(id).remove();
             alert('تم رفض الطلب بنجاح.');
-        }
-
-        window.onload = function() {
-            const savedQ = localStorage.getItem('rafiq_current_question');
-            if(savedQ) {
-                document.getElementById('student-question-display').innerText = savedQ;
-            }
         }
     </script>
 </body>
