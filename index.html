@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفيق - التعليم الأزهري (من الحضانة إلى الخامس)</title>
+    <title>رفيق - الحضانة الأزهرية (عادي / نموذجي)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Cairo', sans-serif; background-color: #f0fdf4; }
         .azhari-gradient { background: linear-gradient(135deg, #065f46 0%, #047857 100%); }
-        .sidebar-item:hover { background-color: #ecfdf5; color: #065f46; }
+        .kg-card:hover { transform: translateY(-3px); transition: all 0.3s ease; }
     </style>
 </head>
 <body class="text-slate-800">
@@ -18,13 +18,13 @@
     <header class="azhari-gradient text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <span class="text-2xl font-black bg-amber-400 text-slate-900 px-3 py-1 rounded-xl shadow border-2 border-white/20">رفيق الأزهري</span>
-                <span id="header-system-title" class="text-xs bg-emerald-900/50 px-2.5 py-1 rounded-lg border border-emerald-700">المسار الشرعي (KG - 5 ابتدائي)</span>
+                <span class="text-2xl font-black bg-amber-400 text-slate-900 px-3 py-1 rounded-2xl shadow border-2 border-white/20">رفيق الأزهري</span>
+                <span id="header-section-tag" class="text-xs bg-emerald-900/60 px-3 py-1.5 rounded-xl border border-emerald-700 font-bold">الحضانة الأزهرية (القسم العادي)</span>
             </div>
-            <div class="flex items-center gap-2 bg-emerald-950/40 p-1 rounded-2xl border border-emerald-700">
-                <button onclick="switchRole('student')" id="btn-student" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow-sm">طالب</button>
-                <button onclick="switchRole('teacher')" id="btn-teacher" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">معلم</button>
-                <button onclick="switchRole('admin')" id="btn-admin" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">أدمن</button>
+            <div class="flex items-center gap-2 bg-emerald-950/40 p-1.5 rounded-2xl border border-emerald-700">
+                <button onclick="switchRole('student')" id="btn-student" class="text-xs font-bold px-3.5 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">طالب KG</button>
+                <button onclick="switchRole('teacher')" id="btn-teacher" class="text-xs font-bold px-3.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">معلم الحضانة</button>
+                <button onclick="switchRole('admin')" id="btn-admin" class="text-xs font-bold px-3.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الإدارة والكنترول</button>
             </div>
         </div>
     </header>
@@ -33,166 +33,178 @@
         
         <div id="view-student" class="space-y-6">
             
-            <div class="bg-white rounded-3xl p-6 shadow-xl border-t-8 border-amber-400 flex flex-col lg:flex-row justify-between items-center gap-6">
+            <div class="bg-white rounded-[2.5rem] p-6 shadow-xl border-t-8 border-amber-400 flex flex-col lg:flex-row justify-between items-center gap-6">
                 <div class="flex items-center gap-5">
                     <div class="relative">
-                        <img id="student-avatar-img" src="https://api.iconify.design/lucide:user-round.svg?color=%23065f46" alt="صورة الطالب" class="w-24 h-24 rounded-3xl object-cover border-4 border-emerald-50 bg-emerald-50 p-2">
-                        <div class="absolute -top-2 -right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-1 rounded-lg border border-white">أزهري موثق</div>
+                        <img src="https://api.iconify.design/lucide:baby.svg?color=%23065f46" alt="أيقونة طفل" class="w-20 h-20 rounded-3xl object-cover border-4 border-emerald-100 bg-emerald-50 p-2">
+                        <span id="badge-type-tag" class="absolute -bottom-2 -right-2 bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full shadow">عادي</span>
                     </div>
                     <div>
-                        <div class="flex flex-wrap items-center gap-2">
-                            <h1 class="text-2xl font-black text-emerald-900" id="student-name-display">أحمد محمد إبراهيم</h1>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-1 rounded-full border border-emerald-200" id="student-track-badge">الصف الثالث الابتدائي الأزهري</span>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-2xl font-black text-emerald-900" id="student-name-display">عمر حمزة الأزهري</h1>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full" id="student-grade-display">حضانة أزهرية (KG 1)</span>
                         </div>
-                        <p class="text-slate-500 text-xs mt-1" id="student-location-info">مقيم في مصر - كفر الشيخ | الرقم القومي: 30120514...</p>
-                        <div class="flex gap-4 mt-3">
-                            <span class="text-[11px] font-bold text-emerald-700 flex items-center gap-1"><i class="fa-solid fa-check-circle"></i> ربط جوجل نشط</span>
-                            <span class="text-[11px] font-bold text-amber-600 flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i> تنبيهات ولي الأمر مفعلة</span>
-                        </div>
+                        <p class="text-slate-500 text-xs mt-1" id="student-location-info">مقيم في مصر - كفر الشيخ - معهد أزهري عادي</p>
+                        <p class="text-amber-600 text-xs mt-0.5 font-bold" id="student-contact-info">واتساب ولي الأمر: 01012345678 🟢 ربط جوجل نشط</p>
                     </div>
                 </div>
-                <div class="flex flex-col gap-2 w-full lg:w-auto">
-                    <button onclick="openProfileModal()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm px-6 py-3 rounded-2xl shadow-lg transition-all transform hover:scale-105">تحديث الملف والبيانات الرسمية ⚙️</button>
-                    <div class="flex justify-center gap-2">
-                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                        <span class="text-[10px] text-emerald-700 font-bold">متصل الآن بالبث الأزهري المباشر</span>
-                    </div>
+                <div>
+                    <button onclick="openProfileModal()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-3 rounded-2xl shadow-lg transition transform hover:scale-105">تعديل ملف البطل ونوع المعهد ⚙️</button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                <div class="lg:col-span-1 bg-white rounded-3xl p-5 shadow-sm border border-slate-100 space-y-4">
-                    <h3 class="font-black text-emerald-900 border-r-4 border-amber-400 pr-3 mb-4">خريطة المواد الأزهرية</h3>
-                    <nav id="subject-list" class="space-y-2">
-                        <div class="sidebar-item p-3 rounded-2xl text-xs font-bold transition flex justify-between items-center bg-emerald-50 text-emerald-900 cursor-pointer border border-emerald-100">
-                            <span>📖 القرآن الكريم</span>
-                            <span class="bg-emerald-600 text-white text-[9px] px-1.5 py-0.5 rounded-md">حفظ</span>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-emerald-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 id="board-title" class="font-black text-lg text-emerald-900 border-r-4 border-amber-400 pr-3">سبورة التأسيس (القسم العادي)</h3>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-black px-3 py-1 rounded-full">معتمد من الأزهر 🛡️</span>
                         </div>
-                        <div class="sidebar-item p-3 rounded-2xl text-xs font-bold transition text-slate-600 cursor-pointer">📜 الفقه الشافعي</div>
-                        <div class="sidebar-item p-3 rounded-2xl text-xs font-bold transition text-slate-600 cursor-pointer">🕌 أصول الدين</div>
-                        <div class="sidebar-item p-3 rounded-2xl text-xs font-bold transition text-slate-600 cursor-pointer">✍️ اللغة العربية</div>
-                        <div class="sidebar-item p-3 rounded-2xl text-xs font-bold transition text-slate-600 cursor-pointer">📚 القاعدة النورانية</div>
-                    </nav>
+                        
+                        <div id="board-content-box" class="bg-gradient-to-br from-emerald-900 to-slate-900 text-amber-200 p-8 rounded-3xl text-center shadow-inner mb-4 border-4 border-amber-400/30">
+                            <span class="text-xs bg-amber-400 text-slate-900 px-3 py-1 rounded-full font-black mb-3 inline-block">القاعدة النورانية والتهجي</span>
+                            <div class="text-5xl font-black text-white my-3">أَ • بـَ • تـَ</div>
+                            <p class="text-sm text-emerald-200 mt-2">"تأسيس الحروف الهجائية بالفتح والكسر والضم"</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-center kg-card cursor-pointer">
+                                <span class="text-xl block mb-1">📖</span>
+                                <span class="text-xs font-black text-emerald-900">سورة الفاتحة والقصار</span>
+                                <span class="text-[10px] text-emerald-600 block mt-1">تلقين صحيح</span>
+                            </div>
+                            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-center kg-card cursor-pointer" id="extra-activity-box">
+                                <span class="text-xl block mb-1">🌟</span>
+                                <span class="text-xs font-black text-emerald-900">الآداب والأخلاق</span>
+                                <span class="text-[10px] text-emerald-600 block mt-1">دعاء دخول المنزل</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold text-sm text-amber-900">سؤال المعلم للبطل الصغير:</h4>
+                                <p id="student-question-display" class="text-xs text-amber-800 mt-1">انطق حرف الباء بالفتحة يا بطل؟</p>
+                            </div>
+                            <button onclick="raiseHand()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition">رفع اليد للمشاركة 🙋‍♂️</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="lg:col-span-3 space-y-6">
-                    <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 id="curriculum-title" class="font-black text-lg text-emerald-900">سبورة الفصل الحية (الصف الثالث الابتدائي الأزهري)</h3>
-                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-black px-3 py-1 rounded-full border border-emerald-200 uppercase">بث مباشر 🟢</span>
-                        </div>
-                        <div id="curriculum-content-box" class="bg-slate-900 text-emerald-100 p-8 rounded-[2.5rem] text-center text-2xl font-bold shadow-2xl border-4 border-slate-800 leading-relaxed">
-                            "وَالسَّمَاءِ وَالطَّارِقِ • وَمَا أَدْرَاكَ مَا الطَّارِقُ • النَّجْمُ الثَّاقِبُ"
-                            <div class="text-xs text-emerald-400 mt-4 font-normal">المقرر: حفظ سورة الطارق مع التجويد</div>
-                        </div>
-                        <div class="mt-6 bg-emerald-50 border border-emerald-100 p-5 rounded-3xl space-y-4">
-                            <div class="flex items-center gap-3">
-                                <div class="bg-amber-400 p-2 rounded-xl text-slate-900 font-black text-xs">سؤال المعلم</div>
-                                <p id="student-question-display" class="text-sm text-emerald-900 font-bold">ما هو المعنى المقصود بكلمة "الطارق" في الآية الأولى؟</p>
-                            </div>
-                            <div class="flex gap-2">
-                                <input type="text" id="student-answer-input" placeholder="اكتب إجابتك هنا يا بطل..." class="flex-1 border-2 border-emerald-100 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-600 bg-white transition-all shadow-inner">
-                                <button onclick="submitStudentAnswer()" class="bg-emerald-800 hover:bg-emerald-900 text-white font-black text-xs px-6 py-3 rounded-2xl shadow-xl transition-all active:scale-95">إرسال الإجابة 🚀</button>
-                            </div>
-                        </div>
+                <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-emerald-100">
+                    <h3 class="font-black text-base text-emerald-900 mb-4 flex justify-between items-center">
+                        <span>أبطال بستان الحضانة</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full font-bold">15 طفلًا</span>
+                    </h3>
+                    <div class="space-y-2 max-h-96 overflow-y-auto pr-1">
+                        <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">🧒🏻</span><div><span class="text-xs font-bold block text-emerald-900">يوسف أحمد</span><span class="text-[10px] text-slate-500">KG 1 - عادي</span></div></div>
+                        <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">👧🏻</span><div><span class="text-xs font-bold block text-emerald-900">فاطمة إبراهيم</span><span class="text-[10px] text-slate-500">KG 2 - نموذجي</span></div></div>
+                        <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-200 bg-emerald-100/50"><span class="text-2xl">👦🏼</span><div><span class="text-xs font-black block text-emerald-950" id="current-student-label">عمر حمزة (أنت)</span><span class="text-[10px] text-emerald-700">KG 1</span></div></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="view-teacher" class="space-y-6 hidden">
-            <div class="bg-emerald-900 rounded-3xl p-8 text-white shadow-xl flex justify-between items-center border-b-8 border-amber-400">
+            <div class="bg-gradient-to-r from-slate-800 to-emerald-900 rounded-[2.5rem] p-6 text-white shadow-xl flex justify-between items-center">
                 <div>
-                    <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block uppercase tracking-wider">لوحة المعلم المعتمد</span>
-                    <h1 class="text-3xl font-black">أهلاً بك يا مولانا.. أستاذ محمود</h1>
-                    <p class="text-emerald-100 text-sm mt-1">أنت تشرف الآن على طالب أزهري في المرحلة الابتدائية.</p>
+                    <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">لوحة معلم الحضانة</span>
+                    <h1 class="text-2xl font-black">أهلاً بك يا شيخ المعاهد الأزهرية</h1>
+                    <p class="text-emerald-100 text-sm">إدارة مناهج الحضانة للقسمين (العادي والنموذجي) ومتابعة الحفظ.</p>
                 </div>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
-                    <h3 class="font-black text-lg text-slate-800 mb-3">بث الأسئلة الفورية للسبورة</h3>
-                    <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب سؤالاً جديداً للطلاب..."></textarea>
+                <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-200">
+                    <h3 class="font-black text-lg text-slate-800 mb-3">بث سؤال أو تدريبات للحضانة</h3>
+                    <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب سؤالاً أو حرفاً جديداً للتدريب..."></textarea>
                     <button onclick="sendQuestionToClass()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">بث السؤال عبر السحابة 🚀</button>
                 </div>
-                <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
-                    <h3 class="font-black text-lg text-slate-800 mb-3">إجابات الطلاب الواردة حياً 📥</h3>
-                    <div id="teacher-answers-feed" class="space-y-2 max-h-64 overflow-y-auto pr-1"></div>
+
+                <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-200">
+                    <h3 class="font-black text-lg text-slate-800 mb-3">مشاركات الأطفال 📥</h3>
+                    <div id="teacher-answers-feed" class="space-y-2">
+                        <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-100 flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-900">عمر حمزة - نطق حرف الألف صحيحاً 🌟</span>
+                            <span class="text-[10px] bg-emerald-600 text-white px-2 py-1 rounded-lg font-bold">ممتاز</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div id="view-admin" class="space-y-6 hidden">
-            <div class="bg-amber-600 rounded-3xl p-8 text-white shadow-xl border-b-8 border-emerald-900">
-                <h1 class="text-3xl font-black">غرفة العمليات المركزية</h1>
-                <p class="text-amber-50 text-sm mt-1">متابعة طلاب الأزهر المسجلين بالرقم القومي وضمان جودة المحتوى الشرعي.</p>
+            <div class="bg-gradient-to-r from-amber-600 to-orange-700 rounded-[2.5rem] p-6 text-white shadow-xl">
+                <h1 class="text-2xl font-black mb-1">غرفة كنترول وتصنيف المعاهد الأزهرية</h1>
+                <p class="text-amber-100 text-sm">إدارة السجلات الرسمية والتحكم في فصل المناهج بين القسم العادي والنموذجي بدقة تامة.</p>
             </div>
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
-                <h3 class="font-black text-lg text-slate-800 mb-4">طلبات انضمام المعلمين الجديدة للأزهر</h3>
-                <div id="admin-teachers-list"></div>
+
+            <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-200">
+                <h3 class="font-black text-lg text-slate-800 mb-4">سجل الطلاب والتقسيم المؤسسي</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">عمر حمزة الأزهري (القسم: العادي - KG 1)</h4>
+                            <p class="text-xs text-slate-500">الرقم القومي: 3200512... | ولي الأمر: 01012345678 (واتساب)</p>
+                        </div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-xl">موثق ومعتمد ✅</span>
+                    </div>
+                </div>
             </div>
         </div>
 
     </main>
 
-    <div id="profile-modal" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
-        <div class="bg-white rounded-[3rem] p-8 max-w-3xl w-full shadow-2xl border-4 border-emerald-100 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="font-black text-2xl text-emerald-900 pr-3 border-r-8 border-amber-400">ملف الطالب الأزهري الرسمي</h3>
-                <button onclick="closeProfileModal()" class="text-slate-400 hover:text-rose-500 transition"><i class="fa-solid fa-circle-xmark text-2xl"></i></button>
-            </div>
+    <div id="profile-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-white rounded-[3rem] p-6 max-w-2xl w-full shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+            <h3 class="font-black text-xl text-emerald-900 mb-2 border-r-4 border-amber-400 pr-3">بيانات البطل ونوع المعهد الأزهري</h3>
+            <p class="text-xs text-slate-500 mb-4">حدد ما إذا كان المعهد (عادي) أو (نموذجي) لضبط المناهج والأنشطة المرتبطة بها بدقة.</p>
             
-            <div class="space-y-6">
-                <div class="bg-emerald-50 p-6 rounded-[2rem] border border-emerald-100">
-                    <h4 class="font-bold text-sm text-emerald-800 mb-4 flex items-center gap-2"><i class="fa-solid fa-id-card"></i> البيانات الأساسية (بموجب شهادة الميلاد)</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="space-y-1">
-                            <label class="block text-[10px] font-bold text-emerald-700">اسم الطالب الرباعي:</label>
-                            <input type="text" id="modal-name" value="أحمد محمد إبراهيم" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="block text-[10px] font-bold text-emerald-700">الرقم القومي المكون من 14 رقماً:</label>
-                            <input type="text" id="modal-national-id" value="30120514123456" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="block text-[10px] font-bold text-emerald-700">تاريخ الميلاد:</label>
-                            <input type="date" id="modal-dob" value="2015-05-12" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="block text-[10px] font-bold text-emerald-700">المرحلة الدراسية الأزهرية:</label>
-                            <select id="modal-grade" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-emerald-500 shadow-sm">
-                                <option value="kg">مرحلة الحضانة (تمهيدي)</option>
-                                <option value="prim1">الصف الأول الابتدائي</option>
-                                <option value="prim2">الصف الثاني الابتدائي</option>
-                                <option value="prim3" selected>الصف الثالث الابتدائي</option>
-                                <option value="prim4">الصف الرابع الابتدائي</option>
-                                <option value="prim5">الصف الخامس الابتدائي</option>
-                            </select>
-                        </div>
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">اسم الطفل الثلاثي:</label>
+                        <input type="text" id="modal-name" value="عمر حمزة الأزهري" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">الرقم القومي (14 رقماً):</label>
+                        <input type="text" id="modal-national-id" value="32005121234567" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-slate-50 p-5 rounded-[2rem] border border-slate-100">
-                        <h4 class="font-bold text-sm text-slate-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-users"></i> بيانات الوالدين</h4>
-                        <div class="space-y-3">
-                            <input type="text" id="modal-father" placeholder="اسم الأب" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs shadow-sm">
-                            <input type="text" id="modal-mother" placeholder="اسم الأم" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs shadow-sm">
-                        </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">قسم المعهد الأزهري:</label>
+                        <select id="modal-section-type" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600 font-bold text-emerald-900">
+                            <option value="normal" selected>القسم العادي (المناهج الشرعية الأساسية)</option>
+                            <option value="model">القسم النموذجي (مع إثرائية اللغات والأنشطة)</option>
+                        </select>
                     </div>
-                    <div class="bg-slate-50 p-5 rounded-[2rem] border border-slate-100">
-                        <h4 class="font-bold text-sm text-slate-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-map-location-dot"></i> السكن والاتصال</h4>
-                        <div class="space-y-3">
-                            <input type="text" id="modal-gov" placeholder="المحافظة" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs shadow-sm">
-                            <input type="text" id="modal-whatsapp" placeholder="رقم واتساب ولي الأمر" class="w-full border-2 border-white rounded-xl px-4 py-2 text-xs shadow-sm">
-                        </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">مستوى الحضانة:</label>
+                        <select id="modal-grade" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                            <option value="kg1" selected>KG 1 (تمهيدي)</option>
+                            <option value="kg2">KG 2 (تأسيس مبكر)</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="flex justify-between items-center gap-4 pt-4 border-t border-slate-100">
-                    <button onclick="linkGoogleAccount()" class="bg-white border-2 border-blue-100 text-blue-700 font-black text-xs px-6 py-3 rounded-2xl shadow-sm hover:bg-blue-50 transition">ربط حساب GOOGLE 🌐</button>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">اسم الأب والام:</label>
+                        <input type="text" id="modal-parents" value="حمزة الأزهري / آمنة محمود" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">رقم واتساب ولي الأمر:</label>
+                        <input type="text" id="modal-whatsapp" value="+201012345678" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600">
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-2">
+                    <button onclick="linkGoogleAccount()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition">ربط حساب جوجل 🌐</button>
                     <div class="flex gap-2">
-                        <button onclick="closeProfileModal()" class="text-slate-400 font-bold text-xs px-4 py-3">إلغاء</button>
-                        <button onclick="saveAzhariProfile()" class="bg-amber-400 text-slate-900 font-black text-sm px-10 py-3 rounded-2xl shadow-xl hover:bg-amber-500 transition">حفظ الملف الأزهرى 💾</button>
+                        <button onclick="closeProfileModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-4 py-2.5 rounded-xl transition">إلغاء</button>
+                        <button onclick="saveStudentProfile()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">حفظ التحديثات 💾</button>
                     </div>
                 </div>
             </div>
@@ -203,80 +215,83 @@
         const SUPABASE_URL = 'https://frtdytphvxbrjupvruzya.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZydGR5dHBodnhicmp1dnJ6dXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwNzMyMDQsImV4cCI6MjEwNDY0OTIwNH0.JwbdvOwLApjImRTUkKe4BAxwj2lGTMuYidIH3iiIVys';
         
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        // الاستماع اللحظي للأسئلة
-        supabaseClient.channel('public:classroom_questions').on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'classroom_questions' }, payload => {
-            if(payload.new && payload.new.question_text) {
-                document.getElementById('student-question-display').innerText = payload.new.question_text;
+        let supabaseClient = null;
+        try {
+            if (typeof supabase !== 'undefined') {
+                supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                supabaseClient.channel('public:classroom_questions').on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'classroom_questions' }, payload => {
+                    if(payload.new && payload.new.question_text) {
+                        document.getElementById('student-question-display').innerText = payload.new.question_text;
+                    }
+                }).subscribe();
             }
-        }).subscribe();
+        } catch(e) { console.log('وضع التشغيل المحلي نشط'); }
 
         function switchRole(role) {
             document.getElementById('view-student').classList.add('hidden');
             document.getElementById('view-teacher').classList.add('hidden');
             document.getElementById('view-admin').classList.add('hidden');
-            if(role === 'student') document.getElementById('view-student').classList.remove('hidden');
-            if(role === 'teacher') document.getElementById('view-teacher').classList.remove('hidden');
-            if(role === 'admin') document.getElementById('view-admin').classList.remove('hidden');
+
+            document.getElementById('btn-student').className = "text-xs font-bold px-3.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition";
+            document.getElementById('btn-teacher').className = "text-xs font-bold px-3.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition";
+            document.getElementById('btn-admin').className = "text-xs font-bold px-3.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition";
+
+            if(role === 'student') {
+                document.getElementById('view-student').classList.remove('hidden');
+                document.getElementById('btn-student').className = "text-xs font-bold px-3.5 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow";
+            } else if(role === 'teacher') {
+                document.getElementById('view-teacher').classList.remove('hidden');
+                document.getElementById('btn-teacher').className = "text-xs font-bold px-3.5 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow";
+            } else if(role === 'admin') {
+                document.getElementById('view-admin').classList.remove('hidden');
+                document.getElementById('btn-admin').className = "text-xs font-bold px-3.5 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow";
+            }
         }
 
         function openProfileModal() { document.getElementById('profile-modal').classList.remove('hidden'); }
         function closeProfileModal() { document.getElementById('profile-modal').classList.add('hidden'); }
+        function linkGoogleAccount() { alert('تم ربط حساب Google الخاص بالطفل بنجاح! 🌐'); }
 
-        function saveAzhariProfile() {
+        function saveStudentProfile() {
             const name = document.getElementById('modal-name').value;
-            const gradeSelect = document.getElementById('modal-grade');
-            const gradeText = gradeSelect.options[gradeSelect.selectedIndex].text;
-            const nationalId = document.getElementById('modal-national-id').value;
+            const sectionType = document.getElementById('modal-section-type').value;
+            const whatsapp = document.getElementById('modal-whatsapp').value;
 
             document.getElementById('student-name-display').innerText = name;
-            document.getElementById('student-track-badge').innerText = gradeText;
-            document.getElementById('curriculum-title').innerText = `سبورة الفصل الحية (${gradeText})`;
-            
-            // تحديث المواد بناءً على المرحلة
-            updateAzhariSubjects(gradeSelect.value);
-            
-            closeProfileModal();
-            alert('تم حفظ الملف الأزهري وتعديل المنهج بناءً على مرحلتك الدراسية! ✅');
-        }
+            document.getElementById('current-student-label').innerText = `${name.split(' ')[0]} (أنت)`;
+            document.getElementById('student-contact-info').innerText = `واتساب ولي الأمر: ${whatsapp} 🟢 ربط حساب جوجل نشط`;
 
-        function updateAzhariSubjects(grade) {
-            const list = document.getElementById('subject-list');
-            let subjects = "";
-            if(grade === 'kg') {
-                subjects = `
-                    <div class="sidebar-item p-3 rounded-2xl text-xs font-bold bg-emerald-50 text-emerald-900 border border-emerald-100">📖 القاعدة النورانية</div>
-                    <div class="sidebar-item p-3 rounded-2xl text-xs font-bold text-slate-600">🕋 سور قصيرة</div>
-                    <div class="sidebar-item p-3 rounded-2xl text-xs font-bold text-slate-600">👦 أذكار المسلم الصغير</div>
-                `;
+            const badgeTag = document.getElementById('badge-type-tag');
+            const boardTitle = document.getElementById('board-title');
+            const headerTag = document.getElementById('header-section-tag');
+            const extraBox = document.getElementById('extra-activity-box');
+
+            if(sectionType === 'model') {
+                badgeTag.innerText = "نموذجي";
+                boardTitle.innerText = "سبورة التأسيس (القسم النموذجي - إثرائي ولغات)";
+                headerTag.innerText = "الحضانة الأزهرية (القسم النموذجي)";
+                extraBox.innerHTML = '<span class="text-xl block mb-1">🗣️</span><span class="text-xs font-black text-emerald-900">المحادثة الإنجليزية</span><span class="text-[10px] text-emerald-600 block mt-1">تأسيس لغات مبكر</span>';
             } else {
-                subjects = `
-                    <div class="sidebar-item p-3 rounded-2xl text-xs font-bold bg-emerald-50 text-emerald-900 border border-emerald-100">📖 القرآن الكريم</div>
-                    <div class="sidebar-item p-3 rounded-2xl text-xs font-bold text-slate-600">📜 الفقه الميسر</div>
-                    <div class="sidebar-item p-3 rounded-2xl text-xs font-bold text-slate-600">🕌 التوحيد والعقيدة</div>
-                    <div class="sidebar-item p-3 rounded-2xl text-xs font-bold text-slate-600">✍️ اللغة العربية</div>
-                `;
+                badgeTag.innerText = "عادي";
+                boardTitle.innerText = "سبورة التأسيس (القسم العادي)";
+                headerTag.innerText = "الحضانة الأزهرية (القسم العادي)";
+                extraBox.innerHTML = '<span class="text-xl block mb-1">🌟</span><span class="text-xs font-black text-emerald-900">الآداب والأخلاق</span><span class="text-[10px] text-emerald-600 block mt-1">دعاء دخول المنزل</span>';
             }
-            list.innerHTML = subjects;
+
+            closeProfileModal();
+            alert('تم حفظ بيانات الحضانة الأزهرية وتحديث المناهج حسب نوع المعهد بنجاح! 🌟');
         }
 
-        async function submitStudentAnswer() {
-            const ansInput = document.getElementById('student-answer-input').value;
-            if(ansInput.trim() !== "") {
-                const studentName = document.getElementById('student-name-display').innerText;
-                const feed = document.getElementById('teacher-answers-feed');
-                feed.innerHTML += `<div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-100 mb-2 flex justify-between items-center"><div><span class="text-xs font-bold text-emerald-900 block">${studentName}</span><span class="text-xs text-emerald-700">${ansInput}</span></div><span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-1 rounded-lg font-bold">بانتظار التقويم</span></div>`;
-                document.getElementById('student-answer-input').value = "";
-                alert('تم إرسال إجابتك للمعلم بنجاح! 🌟');
-            }
-        }
+        function raiseHand() { alert('رفع البطل يده للمشاركة!'); }
 
         async function sendQuestionToClass() {
             const inputVal = document.getElementById('teacher-question-input').value;
             if(inputVal.trim() !== "") {
-                await supabaseClient.from('classroom_questions').insert([{ question_text: inputVal }]);
-                alert('تم بث السؤال للطلاب! 🚀');
+                if (supabaseClient) {
+                    await supabaseClient.from('classroom_questions').insert([{ question_text: inputVal }]);
+                }
+                document.getElementById('student-question-display').innerText = inputVal;
+                alert('تم بث السؤال التأسيسي بنجاح!');
                 document.getElementById('teacher-question-input').value = "";
             }
         }
