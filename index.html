@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفيق - المدرسة الأزهرية الافتراضية المتكاملة</title>
+    <title>رفيق - محاكاة المدرسة الأزهرية الافتراضية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f0fdf4; }
         .school-gate-bg { 
-            background: linear-gradient(rgba(4, 120, 87, 0.85), rgba(6, 78, 59, 0.95)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(4, 120, 87, 0.88), rgba(6, 78, 59, 0.96)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
         }
-        .corridor-bg { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
-        .door-hover:hover { transform: scale(1.03); transition: all 0.3s ease; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        .corridor-bg { background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%); }
+        .door-hover:hover { transform: scale(1.03); transition: all 0.3s ease; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.15); }
     </style>
 </head>
 <body class="text-slate-800">
@@ -22,11 +22,11 @@
     <header class="bg-emerald-900 text-white shadow-xl sticky top-0 z-50 border-b-4 border-amber-400">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <span class="text-2xl font-black bg-amber-400 text-slate-900 px-3.5 py-1 rounded-2xl shadow">مدرسة ريق الأزهرية</span>
-                <span id="nav-status-badge" class="text-xs bg-emerald-950 px-3 py-1 rounded-xl border border-emerald-700">بوابة الدخول الرئيسية</span>
+                <span class="text-2xl font-black bg-amber-400 text-slate-900 px-3.5 py-1 rounded-2xl shadow">مدرسة رفيق الأزهرية</span>
+                <span id="nav-status-badge" class="text-xs bg-emerald-950 px-3 py-1 rounded-xl border border-emerald-600">بوابة المدرسة الرئيسية 🌳</span>
             </div>
             <div class="flex items-center gap-2 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-700">
-                <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition">بوابة المدرسة 🏫</button>
+                <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition">البوابة 🏫</button>
                 <button onclick="switchRole('teacher')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">المعلم 👨‍🏫</button>
                 <button onclick="switchRole('admin')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الكنترول 🛡️</button>
             </div>
@@ -35,98 +35,64 @@
 
     <main class="container mx-auto px-4 py-6 max-w-7xl">
 
-        <div id="view-gate" class="school-gate-bg rounded-[3rem] p-8 md:p-16 text-white shadow-2xl space-y-8 min-h-[80vh] flex flex-col justify-center items-center text-center relative overflow-hidden border-8 border-amber-400/40">
+        <div id="view-gate" class="school-gate-bg rounded-[3rem] p-8 md:p-16 text-white shadow-2xl space-y-8 min-h-[82vh] flex flex-col justify-center items-center text-center relative overflow-hidden border-8 border-amber-400/40">
             
-            <div class="absolute top-4 inset-x-4 flex justify-between items-center px-6 opacity-90">
-                <span class="bg-emerald-950/80 px-4 py-2 rounded-2xl text-xs font-bold border border-emerald-600">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span>
-                <span class="bg-emerald-950/80 px-4 py-2 rounded-2xl text-xs font-bold border border-emerald-600">معهد صهيب، رقيه ومصعب الأزهري النموذجي</span>
+            <div class="absolute top-4 inset-x-4 flex justify-between items-center px-6 opacity-95">
+                <span class="bg-emerald-950/90 px-4 py-2 rounded-2xl text-xs font-bold border border-emerald-500 shadow">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span>
+                <span class="bg-emerald-950/90 px-4 py-2 rounded-2xl text-xs font-bold border border-emerald-500 shadow">مجمع صهيب، رقيه ومصعب الأزهري النموذجي</span>
             </div>
 
             <div class="space-y-4 max-w-2xl mt-8">
-                <span class="bg-amber-400 text-slate-900 text-xs font-black px-4 py-1.5 rounded-full shadow-lg inline-block">أهلاً بك يا ولي الأمر الكريم / محمد السعيد</span>
-                <h1 class="text-4xl md:text-5xl font-black tracking-wide leading-tight">مرحباً بكم في رحاب صرحنا التعليمي الأزهري</h1>
-                <p class="text-emerald-100 text-sm">اختر البطل الدارس للدخول إلى بستان الفصول الدراسية المزينة ومحاكاة المدرسة الحقيقية:</p>
+                <span class="bg-amber-400 text-slate-900 text-xs font-black px-4 py-1.5 rounded-full shadow-lg inline-block">ولي الأمر الكريم: محمد السعيد</span>
+                <h1 class="text-4xl md:text-5xl font-black tracking-wide leading-tight">بستان المعاهد الأزهرية الافتراضية</h1>
+                <p class="text-emerald-100 text-sm">اختر البطل الدخول إلى فصله المخصص ومناهجه الحصرية:</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
-                <div onclick="enterStudentSchool('sohaib', 'الحضانة الأزهرية (KG)', 'صهيب محمد السعيد')" class="bg-white/95 text-slate-900 p-6 rounded-[2.5kt] rounded-[2.5rem] shadow-xl door-hover cursor-pointer border-4 border-amber-400 text-right space-y-3">
-                    <div class="text-3xl">🌱</div>
+                
+                <div onclick="enterClassroom('1/1', 'صهيب محمد السعيد', 'مرحلة الحضانة (KG)', 'القاعدة النورانية والتهجي', 'أَ • بـَ • تـَ', 'تأسيس الحروف الهجائية للأطفال')" class="bg-white/95 text-slate-900 p-6 rounded-[2.5rem] shadow-xl door-hover cursor-pointer border-4 border-amber-400 text-right space-y-3">
+                    <div class="flex justify-between items-center"><span class="text-3xl">🌱</span><span class="bg-amber-400 text-slate-900 text-xs font-black px-2.5 py-1 rounded-lg">فصل 1/1</span></div>
                     <h3 class="font-black text-lg text-emerald-900">صهيب محمد السعيد</h3>
-                    <p class="text-xs text-slate-600">المرحلة: الحضانة (KG)</p>
-                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full block text-center">فتح باب الفصل 🚪</span>
+                    <p class="text-xs text-slate-600">الحضانة الأزهرية</p>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full block text-center">دخول فصل 1/1 🚪</span>
                 </div>
 
-                <div onclick="enterStudentSchool('roqaya', 'الصف الأول والثاني الابتدائي', 'رقيه محمد السعيد')" class="bg-white/95 text-slate-900 p-6 rounded-[2.5rem] shadow-xl door-hover cursor-pointer border-4 border-emerald-400 text-right space-y-3">
-                    <div class="text-3xl">📚</div>
+                <div onclick="enterClassroom('1/2', 'رقيه محمد السعيد', 'الصف الأول والثاني الابتدائي', 'القرآن الكريم والفقه الميسر', 'سورة الفاتحة • سورة الناس • سورة الفلق', 'حفظ أجزاء عم وتدريس أحكام الطهارة والصلاة')" class="bg-white/95 text-slate-900 p-6 rounded-[2.5rem] shadow-xl door-hover cursor-pointer border-4 border-amber-400 text-right space-y-3">
+                    <div class="flex justify-between items-center"><span class="text-3xl">📚</span><span class="bg-amber-400 text-slate-900 text-xs font-black px-2.5 py-1 rounded-lg">فصل 1/2</span></div>
                     <h3 class="font-black text-lg text-emerald-900">رقيه محمد السعيد</h3>
-                    <p class="text-xs text-slate-600">المرحلة: أول وثاني ابتدائي</p>
-                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full block text-center">فتح باب الفصل 🚪</span>
+                    <p class="text-xs text-slate-600">الأول والثاني الابتدائي</p>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full block text-center">دخول فصل 1/2 🚪</span>
                 </div>
 
-                <div onclick="enterStudentSchool('mosab', 'الصف الرابع والخامس الابتدائي', 'مصعب محمد السعيد')" class="bg-white/95 text-slate-900 p-6 rounded-[2.5rem] shadow-xl door-hover cursor-pointer border-4 border-emerald-400 text-right space-y-3">
-                    <div class="text-3xl">💡</div>
+                <div onclick="enterClassroom('1/3', 'مصعب محمد السعيد', 'الصف الرابع والخامس الابتدائي', 'القرآن الكريم والعلوم الشرعية', 'سورة الملك • أحكام التجويد', 'تفسير السور المقررة، وفقه المعاملات')" class="bg-white/95 text-slate-900 p-6 rounded-[2.5rem] shadow-xl door-hover cursor-pointer border-4 border-amber-400 text-right space-y-3">
+                    <div class="flex justify-between items-center"><span class="text-3xl">💡</span><span class="bg-amber-400 text-slate-900 text-xs font-black px-2.5 py-1 rounded-lg">فصل 1/3</span></div>
                     <h3 class="font-black text-lg text-emerald-900">مصعب محمد السعيد</h3>
-                    <p class="text-xs text-slate-600">المرحلة: رابع وخامس ابتدائي</p>
-                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full block text-center">فتح باب الفصل 🚪</span>
-                </div>
-            </div>
-
-            <button onclick="openHallway()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-black text-sm px-8 py-3 rounded-2xl shadow-xl transition">الدخول لساحة وفصول المدرسة 🏫</button>
-        </div>
-
-        <div id="view-hallway" class="corridor-bg rounded-[3rem] p-8 shadow-inner space-y-6 hidden min-h-[75vh]">
-            <div class="text-center space-y-2">
-                <span class="bg-emerald-800 text-white text-xs font-bold px-4 py-1.5 rounded-full">ممر الفصول الافتراضية الحقيقي</span>
-                <h2 class="text-3xl font-black text-slate-800">اختر باب الفصل للدخول وتلقي الدرس</h2>
-                <p class="text-xs text-slate-500">كل باب يحمل رقم الفصل ومرحلة أطفالنا الأعزاء:</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-6">
-                <div onclick="enterStudentSchool('sohaib', 'الحضانة الأزهرية (KG)', 'صهيب محمد السعيد')" class="bg-gradient-to-b from-amber-700 to-amber-900 text-white p-8 rounded-[2rem] shadow-2xl door-hover cursor-pointer border-4 border-amber-300 text-center space-y-4">
-                    <span class="bg-amber-400 text-slate-900 text-sm font-black px-4 py-1.5 rounded-xl shadow">فصل رقم ( 101 )</span>
-                    <h3 class="text-xl font-bold">حضانة صهيب محمد السعيد</h3>
-                    <p class="text-xs text-amber-200">القاعدة النورانية والآداب</p>
-                    <div class="pt-4"><span class="bg-white/20 px-4 py-2 rounded-xl text-xs font-bold">دخول الفصل 🚪</span></div>
+                    <p class="text-xs text-slate-600">الرابع والخامس الابتدائي</p>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full block text-center">دخول فصل 1/3 🚪</span>
                 </div>
 
-                <div onclick="enterStudentSchool('roqaya', 'الصف الأول والثاني الابتدائي', 'رقيه محمد السعيد')" class="bg-gradient-to-b from-emerald-700 to-emerald-900 text-white p-8 rounded-[2rem] shadow-2xl door-hover cursor-pointer border-4 border-amber-300 text-center space-y-4">
-                    <span class="bg-amber-400 text-slate-900 text-sm font-black px-4 py-1.5 rounded-xl shadow">فصل رقم ( 102 )</span>
-                    <h3 class="text-xl font-bold">فصل رقيه محمد السعيد</h3>
-                    <p class="text-xs text-emerald-200">القرآن والفقه الميسر</p>
-                    <div class="pt-4"><span class="bg-white/20 px-4 py-2 rounded-xl text-xs font-bold">دخول الفصل 🚪</span></div>
-                </div>
-
-                <div onclick="enterStudentSchool('mosab', 'الصف الرابع والخامس الابتدائي', 'مصعب محمد السعيد')" class="bg-gradient-to-b from-teal-700 to-teal-900 text-white p-8 rounded-[2rem] shadow-2xl door-hover cursor-pointer border-4 border-amber-300 text-center space-y-4">
-                    <span class="bg-amber-400 text-slate-900 text-sm font-black px-4 py-1.5 rounded-xl shadow">فصل رقم ( 103 )</span>
-                    <h3 class="text-xl font-bold">فصل مصعب محمد السعيد</h3>
-                    <p class="text-xs text-teal-200">العلوم الشرعية والحديث</p>
-                    <div class="pt-4"><span class="bg-white/20 px-4 py-2 rounded-xl text-xs font-bold">دخول الفصل 🚪</span></div>
-                </div>
-            </div>
-            <div class="text-center pt-4">
-                <button onclick="goToGate()" class="text-xs font-bold text-emerald-800 underline">العودة لبوابة المدرسة الخارجية 🌳</button>
             </div>
         </div>
 
         <div id="view-classroom" class="space-y-6 hidden">
+            
             <div class="bg-white rounded-[2.5rem] p-6 shadow-xl border-t-8 border-amber-400 flex flex-col lg:flex-row justify-between items-center gap-6">
                 <div class="flex items-center gap-5">
                     <div class="relative">
-                        <img src="https://api.iconify.design/lucide:school.svg?color=%23065f46" alt="فصل" class="w-20 h-20 rounded-3xl object-cover border-4 border-emerald-100 bg-emerald-50 p-2">
-                        <span class="absolute -bottom-2 -right-2 bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full shadow">نشط</span>
+                        <img id="classroom-student-avatar" src="https://api.iconify.design/lucide:school.svg?color=%23065f46" alt="فصل" class="w-20 h-20 rounded-3xl object-cover border-4 border-emerald-100 bg-emerald-50 p-2">
+                        <span id="classroom-badge-num" class="absolute -bottom-2 -right-2 bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full shadow">فصل 1/1</span>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
                             <h1 class="text-2xl font-black text-emerald-900" id="active-student-name">صهيب محمد السعيد</h1>
                             <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full" id="active-grade-display">حضانة أزهرية</span>
                         </div>
-                        <p class="text-slate-500 text-xs mt-1">ولي الأمر: محمد السعيد | واتساب: 01012345678 🟢 ربط جوجل نشط</p>
-                        <p class="text-amber-600 text-xs mt-0.5 font-bold">الرقم القومي موثق رسمياً في سجلات المدرسة</p>
+                        <p class="text-slate-500 text-xs mt-1">ولي الأمر: محمد السعيد | الرقم القومي موثق رسمياً</p>
+                        <p class="text-amber-600 text-xs mt-0.5 font-bold">🟢 واتساب ولي الأمر مفعل للتذكير والمتابعة</p>
                     </div>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="openHallway()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-4 py-3 rounded-2xl transition">الرجوع للممر 🚪</button>
-                    <button onclick="openProfileModal()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-3 rounded-2xl shadow-lg transition">تعديل البيانات ⚙️</button>
+                    <button onclick="goToGate()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-5 py-3 rounded-2xl transition">العودة للبوابة 🏫</button>
                 </div>
             </div>
 
@@ -135,20 +101,18 @@
                     <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-emerald-100">
                         <div class="flex justify-between items-center mb-4">
                             <h3 id="board-title" class="font-black text-lg text-emerald-900 border-r-4 border-amber-400 pr-3">سبورة الفصل الحية</h3>
-                            <span class="bg-emerald-100 text-emerald-800 text-xs font-black px-3 py-1 rounded-full">بث مباشر من المعلم 🟢</span>
+                            <span id="board-class-tag" class="bg-emerald-100 text-emerald-800 text-xs font-black px-3 py-1 rounded-full">فصل 1/1 🟢</span>
                         </div>
                         
                         <div class="bg-gradient-to-br from-emerald-900 to-slate-900 text-amber-200 p-8 rounded-3xl text-center shadow-inner mb-4 border-4 border-amber-400/30">
-                            <span class="text-xs bg-amber-400 text-slate-900 px-3 py-1 rounded-full font-black mb-3 inline-block" id="classroom-sub">المنهج الأزهري المقرر</span>
+                            <span class="text-xs bg-amber-400 text-slate-900 px-3 py-1 rounded-full font-black mb-3 inline-block" id="classroom-sub">المقرر الدراسي</span>
                             <div class="text-4xl font-black text-white my-3" id="classroom-main-text">أَ • بـَ • تـَ</div>
-                            <p class="text-sm text-emerald-200 mt-2" id="classroom-desc">تفاعل حي داخل الفصل المدرسي المزود بكافة الخدمات</p>
+                            <p class="text-sm text-emerald-200 mt-2" id="classroom-desc">محتوى مخصص حصرياً لهذا الفصل والمرحلة</p>
                         </div>
 
                         <div class="bg-amber-50 border border-amber-200 p-5 rounded-3xl space-y-3">
-                            <div class="flex justify-between items-center">
-                                <h4 class="font-bold text-sm text-amber-900">سؤال المعلم الحالي:</h4>
-                            </div>
-                            <p id="student-question-display" class="text-xs text-amber-800 font-semibold">استعد لتلقي السؤال المباشر من شيخ الفصل...</p>
+                            <h4 class="font-bold text-sm text-amber-900">سؤال المعلم الموجه لفصلك:</h4>
+                            <p id="student-question-display" class="text-xs text-amber-800 font-semibold">استعد لتلقي السؤال المباشر من شيخ المعهد...</p>
                             <div class="flex gap-2">
                                 <input type="text" id="student-answer-input" placeholder="اكتب إجابتك هنا يا بطل..." class="flex-1 border border-amber-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600 bg-white">
                                 <button onclick="submitStudentAnswer()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2 rounded-xl shadow transition">إرسال ✍️</button>
@@ -159,13 +123,11 @@
 
                 <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-emerald-100">
                     <h3 class="font-black text-base text-emerald-900 mb-4 flex justify-between items-center">
-                        <span>أصدقاؤك في الفصل</span>
+                        <span id="classmates-title">زملاء الفصل 1/1</span>
                         <span class="text-xs bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full font-bold">متصلون</span>
                     </h3>
-                    <div class="space-y-2 max-h-96 overflow-y-auto pr-1">
-                        <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">👦🏻</span><div><span class="text-xs font-bold block text-emerald-900">صهيب محمد السعيد</span><span class="text-[10px] text-slate-500">فصل 101</span></div></div>
-                        <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">👧🏻</span><div><span class="text-xs font-bold block text-emerald-900">رقيه محمد السعيد</span><span class="text-[10px] text-slate-500">فصل 102</span></div></div>
-                        <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">👦🏼</span><div><span class="text-xs font-bold block text-emerald-900">مصعب محمد السعيد</span><span class="text-[10px] text-slate-500">فصل 103</span></div></div>
+                    <div id="classmates-list" class="space-y-2 max-h-96 overflow-y-auto pr-1">
+                        <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">🌱</span><div><span class="text-xs font-bold block text-emerald-900" id="classmate-1">صهيب محمد السعيد</span><span class="text-[10px] text-slate-500">الطالب الأساسي</span></div></div>
                     </div>
                 </div>
             </div>
@@ -176,20 +138,20 @@
                 <div>
                     <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">لوحة المعلم الافتراضي</span>
                     <h1 class="text-2xl font-black">أهلاً بك يا شيخ المعاهد</h1>
-                    <p class="text-emerald-100 text-sm">بث الأسئلة لصهيب، رقيه، ومصعب ومتابعة تفاعلهم داخل الفصول.</p>
+                    <p class="text-emerald-100 text-sm">بث الأسئلة للفصول (1/1 ، 1/2 ، 1/3) ومتابعة تفاعل صهيب، رقيه ومصعب.</p>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-200">
                     <h3 class="font-black text-lg text-slate-800 mb-3">بث سؤال للسبورة الحية</h3>
-                    <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب السؤال لبثه داخل الفصول..."></textarea>
+                    <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب السؤال لبثه للفصول..."></textarea>
                     <button onclick="sendQuestionToClass()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">بث عبر السحابة 🚀</button>
                 </div>
                 <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-200">
-                    <h3 class="font-black text-lg text-slate-800 mb-3">إجابات الأبناء الواردة حياً 📥</h3>
+                    <h3 class="font-black text-lg text-slate-800 mb-3">إجابات الطلاب الواردة حياً 📥</h3>
                     <div id="teacher-answers-feed" class="space-y-2">
                         <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-100 flex justify-between items-center">
-                            <span class="text-xs font-bold text-emerald-900">صهيب محمد السعيد - إجابة صحيحة 🌟</span>
+                            <span class="text-xs font-bold text-emerald-900">صهيب محمد السعيد (فصل 1/1) - إجابة ممتازة 🌟</span>
                             <span class="text-[10px] bg-emerald-600 text-white px-2 py-1 rounded-lg font-bold">مُعتمد</span>
                         </div>
                     </div>
@@ -200,21 +162,21 @@
         <div id="view-admin" class="space-y-6 hidden">
             <div class="bg-gradient-to-r from-amber-600 to-orange-700 rounded-[2.5rem] p-6 text-white shadow-xl">
                 <h1 class="text-2xl font-black mb-1">غرفة الكنترول المركزي (المدرسة الأزهرية)</h1>
-                <p class="text-amber-100 text-sm">إدارة السجلات الرسمية للأبناء (صهيب، رقيه، مصعب) بالرقم القومي وربط واتساب ولي الأمر.</p>
+                <p class="text-amber-100 text-sm">إدارة السجلات الرسمية للأبناء وتوزيعهم على الفصول (1/1 ، 1/2 ، 1/3) بالرقم القومي.</p>
             </div>
             <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-200">
-                <h3 class="font-black text-lg text-slate-800 mb-4">سجل الطلاب المسجلين بالرقم القومي</h3>
+                <h3 class="font-black text-lg text-slate-800 mb-4">سجل الطلاب والفصول المخصصة</h3>
                 <div class="space-y-3">
                     <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div><h4 class="font-bold text-sm text-slate-800">صهيب محمد السعيد (فصل 101 - حضانة)</h4><p class="text-xs text-slate-500">ولي الأمر: محمد السعيد | واتساب: 01012345678</p></div>
+                        <div><h4 class="font-bold text-sm text-slate-800">صهيب محمد السعيد (فصل 1/1 - حضانة)</h4><p class="text-xs text-slate-500">ولي الأمر: محمد السعيد | واتساب: 01012345678</p></div>
                         <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-xl">نشط ✅</span>
                     </div>
                     <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div><h4 class="font-bold text-sm text-slate-800">رقيه محمد السعيد (فصل 102 - أول/ثاني ابتدائي)</h4><p class="text-xs text-slate-500">ولي الأمر: محمد السعيد | واتساب: 01012345678</p></div>
+                        <div><h4 class="font-bold text-sm text-slate-800">رقيه محمد السعيد (فصل 1/2 - أول/ثاني ابتدائي)</h4><p class="text-xs text-slate-500">ولي الأمر: محمد السعيد | واتساب: 01012345678</p></div>
                         <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-xl">نشط ✅</span>
                     </div>
                     <div class="flex justify-between items-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div><h4 class="font-bold text-sm text-slate-800">مصعب محمد السعيد (فصل 103 - رابع/خامس ابتدائي)</h4><p class="text-xs text-slate-500">ولي الأمر: محمد السعيد | واتساب: 01012345678</p></div>
+                        <div><h4 class="font-bold text-sm text-slate-800">مصعب محمد السعيد (فصل 1/3 - رابع/خامس ابتدائي)</h4><p class="text-xs text-slate-500">ولي الأمر: محمد السعيد | واتساب: 01012345678</p></div>
                         <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-xl">نشط ✅</span>
                     </div>
                 </div>
@@ -241,7 +203,6 @@
 
         function hideAllViews() {
             document.getElementById('view-gate').classList.add('hidden');
-            document.getElementById('view-hallway').classList.add('hidden');
             document.getElementById('view-classroom').classList.add('hidden');
             document.getElementById('view-teacher').classList.add('hidden');
             document.getElementById('view-admin').classList.add('hidden');
@@ -250,34 +211,32 @@
         function goToGate() {
             hideAllViews();
             document.getElementById('view-gate').classList.remove('hidden');
-            document.getElementById('nav-status-badge').innerText = "بوابة الدخول الرئيسية";
+            document.getElementById('nav-status-badge').innerText = "بوابة المدرسة الرئيسية 🌳";
         }
 
-        function openHallway() {
-            hideAllViews();
-            document.getElementById('view-hallway').classList.remove('hidden');
-            document.getElementById('nav-status-badge').innerText = "ممر الفصول المدرسية";
-        }
-
-        function enterStudentSchool(type, gradeText, fullName) {
+        function enterClassroom(classNum, fullName, gradeText, subText, mainText, descText) {
             hideAllViews();
             document.getElementById('view-classroom').classList.remove('hidden');
+            
             document.getElementById('active-student-name').innerText = fullName;
             document.getElementById('active-grade-display').innerText = gradeText;
-            document.getElementById('nav-status-badge').innerText = `داخل فصل: ${fullName}`;
+            document.getElementById('classroom-badge-num').innerText = `فصل ${classNum}`;
+            document.getElementById('board-class-tag').innerText = `فصل ${classNum} 🟢`;
+            document.getElementById('nav-status-badge').innerText = `داخل فصل ${classNum} : ${fullName}`;
 
-            if(type === 'sohaib') {
-                document.getElementById('classroom-sub').innerText = "القاعدة النورانية والتهجي المبكر";
-                document.getElementById('classroom-main-text').innerText = "أَ • بـَ • تـَ";
-                document.getElementById('classroom-desc').innerText = "تأسيس الحروف الهجائية للأطفال";
-            } else if(type === 'roqaya') {
-                document.getElementById('classroom-sub').innerText = "القرآن الكريم والفقه الميسر";
-                document.getElementById('classroom-main-text').innerText = "سورة الفاتحة • سورة الناس";
-                document.getElementById('classroom-desc').innerText = "حفظ أجزاء عم وتدريس أحكام الطهارة والصلاة المبسطة";
-            } else if(type === 'mosab') {
-                document.getElementById('classroom-sub').innerText = "القرآن الكريم والعلوم الشرعية المتقدمة";
-                document.getElementById('classroom-main-text').innerText = "سورة الملك • أحكام التجويد";
-                document.getElementById('classroom-desc').innerText = "تفسير السور المقررة، وفقه المعاملات";
+            document.getElementById('classroom-sub').innerText = subText;
+            document.getElementById('classroom-main-text').innerText = mainText;
+            document.getElementById('classroom-desc').innerText = descText;
+            document.getElementById('classmates-title').innerText = `زملاء الفصل ${classNum}`;
+            
+            // تخصيص زملاء الفصل بناءً على فصل الطالب (عزل تام لكل فصل)
+            const classmatesList = document.getElementById('classmates-list');
+            if(classNum === '1/1') {
+                classmatesList.innerHTML = `<div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">🌱</span><div><span class="text-xs font-bold block text-emerald-900">صهيب محمد السعيد (أنت)</span><span class="text-[10px] text-slate-500">فصل 1/1 - حضانة</span></div></div>`;
+            } else if(classNum === '1/2') {
+                classmatesList.innerHTML = `<div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">📚</span><div><span class="text-xs font-bold block text-emerald-900">رقيه محمد السعيد (أنت)</span><span class="text-[10px] text-slate-500">فصل 1/2 - أول/ثاني ابتدائي</span></div></div>`;
+            } else if(classNum === '1/3') {
+                classmatesList.innerHTML = `<div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100"><span class="text-2xl">💡</span><div><span class="text-xs font-bold block text-emerald-900">مصعب محمد السعيد (أنت)</span><span class="text-[10px] text-slate-500">فصل 1/3 - رابع/خامس ابتدائي</span></div></div>`;
             }
         }
 
@@ -296,9 +255,10 @@
             const ansInput = document.getElementById('student-answer-input').value;
             if(ansInput.trim() !== "") {
                 const activeName = document.getElementById('active-student-name').innerText;
-                alert(`أحسنت يا بطل (${activeName})! تم إرسال إجابتك للمعلم.`);
+                const classNum = document.getElementById('classroom-badge-num').innerText;
+                alert(`أحسنت يا بطل (${activeName} - ${classNum})! تم إرسال إجابتك للمعلم.`);
                 const feed = document.getElementById('teacher-answers-feed');
-                feed.innerHTML += `<div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-100 flex justify-between items-center mb-2"><span class="text-xs font-bold text-emerald-950">${activeName} أجاب: ${ansInput} 🌟</span><span class="text-[10px] bg-emerald-600 text-white px-2 py-1 rounded-lg font-bold">مُعتمد</span></div>`;
+                feed.innerHTML += `<div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-100 flex justify-between items-center mb-2"><span class="text-xs font-bold text-emerald-950">${activeName} (${classNum}) أجاب: ${ansInput} 🌟</span><span class="text-[10px] bg-emerald-600 text-white px-2 py-1 rounded-lg font-bold">مُعتمد</span></div>`;
                 document.getElementById('student-answer-input').value = "";
             }
         }
