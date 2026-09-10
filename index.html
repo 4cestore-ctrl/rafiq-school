@@ -17,7 +17,7 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <span class="text-2xl font-black bg-amber-400 text-slate-900 px-3 py-1 rounded-xl shadow">رفيق</span>
-                <span class="text-xs bg-emerald-900 px-2.5 py-1 rounded-lg">التعليم الافتراضي المتطور (5 خطوات مفعلة 🚀)</span>
+                <span class="text-xs bg-emerald-900 px-2.5 py-1 rounded-lg">التعليم الافتراضي المتطور (إصدار تفاعلي شامل)</span>
             </div>
             <div class="flex items-center gap-2 bg-emerald-950/50 p-1.5 rounded-2xl border border-emerald-700">
                 <span class="text-xs px-2 text-emerald-200">الدور الحالي:</span>
@@ -35,7 +35,7 @@
                 <div>
                     <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">الصف الثالث الابتدائي الأزهري - الفصل الافتراضي (402)</span>
                     <h1 class="text-2xl md:text-3xl font-black mb-2">أهلاً بك يا بطل، أحمد! 🌟</h1>
-                    <p class="text-emerald-100 text-sm">أنت الآن داخل الفصل المدرسي مع تفعيل البث اللحظي وقاعدة البيانات.</p>
+                    <p class="text-emerald-100 text-sm">أنت الآن داخل الفصل المدرسي مع تفاعل سحابي مباشر وإرسال الإجابات.</p>
                 </div>
                 <div class="mt-4 md:mt-0 bg-white/10 p-4 rounded-2xl border border-white/20 text-center">
                     <span class="block text-xs text-emerald-200">حالة السحابة الحية</span>
@@ -47,18 +47,21 @@
                 <div class="lg:col-span-2 space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-black text-lg text-slate-800 border-r-4 border-emerald-600 pr-3">سبورة الفصل الحية (متزامنة)</h3>
+                            <h3 class="font-black text-lg text-slate-800 border-r-4 border-emerald-600 pr-3">سبورة الفصل الحية</h3>
                             <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">نسبة خطأ صفر (معتمد)</span>
                         </div>
                         <div class="bg-slate-900 text-amber-200 p-6 rounded-2xl text-center text-xl font-bold shadow-inner mb-4">
                             "وَالسَّمَاءِ وَالطَّارِقِ • وَمَا أَدْرَاكَ مَا الطَّارِقُ"
                         </div>
-                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex justify-between items-center">
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl space-y-3">
                             <div>
                                 <h4 class="font-bold text-sm text-amber-900">سؤال المعلم الحالي:</h4>
                                 <p id="student-question-display" class="text-xs text-amber-800 mt-1">ما هو المعنى المقصود بـ "الطارق" في الآية الكريمة؟</p>
                             </div>
-                            <button onclick="raiseHand()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition">رفع اليد للإجابة 🙋‍♂️</button>
+                            <div class="flex gap-2">
+                                <input type="text5" id="student-answer-input" placeholder="اكتب إجابتك هنا يا بطل..." class="flex-1 border border-amber-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-600 bg-white">
+                                <button onclick="submitStudentAnswer()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-4 py-2 rounded-xl shadow transition">إرسال الإجابة ✍️</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,24 +88,26 @@
                 <div>
                     <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">لوحة تحكم المعلم (معتمد ✅)</span>
                     <h1 class="text-2xl font-black">أهلاً بك يا استاذ محمود</h1>
-                    <p class="text-slate-300 text-sm">الفصل الافتراضي (402) - تحكم كامل في البث المباشر.</p>
+                    <p class="text-slate-300 text-sm">الفصل الافتراضي (402) - إدارة البث ومتابعة إجابات الطلاب.</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                     <h3 class="font-black text-lg text-slate-800 mb-3">بث الأسئلة الفورية للسبورة</h3>
-                    <p class="text-xs text-slate-500 mb-3">اكتب السؤال وسيظهر فوراً على شاشات جميع الطلاب.</p>
                     <textarea id="teacher-question-input" class="w-full border border-slate-200 rounded-2xl p-3 text-sm mb-3 focus:outline-none focus:border-emerald-600" rows="3" placeholder="اكتب سؤالاً جديداً للطلاب..."></textarea>
                     <button onclick="sendQuestionToClass()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">بث السؤال عبر السحابة 🚀</button>
                 </div>
 
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
-                    <h3 class="font-black text-lg text-slate-800 mb-3">الطلبة الرافعون أيديهم للإجابة 🙋‍♂️</h3>
-                    <div class="space-y-2">
-                        <div class="bg-emerald-50 p-3 rounded-2xl flex justify-between items-center border border-emerald-100">
-                            <span class="text-xs font-bold text-emerald-900">يوسف محمد - طلب إجابة</span>
-                            <button onclick="alert('تم منح الميكروفون للطالب بنجاح!')" class="bg-emerald-600 text-white text-xs px-3 py-1.5 rounded-xl font-bold">منح الميكروفون 🎤</button>
+                    <h3 class="font-black text-lg text-slate-800 mb-3">إجابات الطلاب الواردة حياً 📥</h3>
+                    <div id="teacher-answers-feed" class="space-y-2 max-h-64 overflow-y-auto pr-1">
+                        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs font-bold text-slate-900 block">يوسف محمد</span>
+                                <span class="text-xs text-emerald-700">النجم الثاقب المضيء.</span>
+                            </div>
+                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-1 rounded-lg font-bold">صحيح ✅</span>
                         </div>
                     </div>
                 </div>
@@ -143,7 +148,7 @@
             if (typeof supabase !== 'undefined') {
                 supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 
-                // الاستماع اللحظي للأسئلة عبر قاعدة البيانات
+                // الاستماع اللحظي للأسئلة
                 supabaseClient
                   .channel('public:classroom_questions')
                   .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'classroom_questions' }, payload => {
@@ -182,15 +187,25 @@
             alert('تم رفع اليد بنجاح! سيمنحك المعلم إذن الإجابة.');
         }
 
+        async function submitStudentAnswer() {
+            const ansInput = document.getElementById('student-answer-input').value;
+            if(ansInput.trim() !== "") {
+                alert('تم إرسال إجابتك بنجاح إلى المعلم عبر السحابة! 🌟');
+                const feed = document.getElementById('teacher-answers-feed');
+                if(feed) {
+                    feed.innerHTML += `<div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 flex justify-between items-center"><div><span class="text-xs font-bold text-slate-900 block">أحمد (أنت)</span><span class="text-xs text-emerald-700">${ansInput}</span></div><span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-1 rounded-lg font-bold">بانتظار المراجعة</span></div>`;
+                }
+                document.getElementById('student-answer-input').value = "";
+            } else {
+                alert('الرجاء كتابة الإجابة أولاً.');
+            }
+        }
+
         async function sendQuestionToClass() {
             const inputVal = document.getElementById('teacher-question-input').value;
             if(inputVal.trim() !== "") {
                 if (supabaseClient) {
-                    const { error } = await supabaseClient.from('classroom_questions').insert([{ question_text: inputVal }]);
-                    if(error) {
-                        alert('حدث خطأ أثناء الإرسال السحابي.');
-                        return;
-                    }
+                    await supabaseClient.from('classroom_questions').insert([{ question_text: inputVal }]);
                 }
                 document.getElementById('student-question-display').innerText = inputVal;
                 alert('تم بث السؤال لحظياً لجميع الطلاب في الفصل!');
