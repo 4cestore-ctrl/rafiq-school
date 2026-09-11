@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفيق — دليلك الآمن والممتع في التعليم الأزهري والعام</title>
+    <title>رفيق — منصة التعليم الذكي التفاعلية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
         .azhari-theme { background: linear-gradient(135deg, #065f46 0%, #047857 100%); color: #fff; }
+        .general-theme { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #fff; }
         
-        /* بوابة المعهد الكبرى والأبواب الفرعية */
         .school-gate-container {
             perspective: 1400px;
             background: linear-gradient(rgba(6, 78, 59, 0.9), rgba(2, 44, 34, 0.98)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=80');
@@ -41,6 +41,24 @@
             backdrop-filter: blur(10px);
             border: 2px solid #fbbf24;
         }
+        .school-floor {
+            background: linear-gradient(to right, #ffffff, #f1f5f9);
+            border-right: 8px solid #059669;
+        }
+        /* أنماط الـ 12 تصميماً للشنط */
+        .backpack-icon { width: 65px; height: 65px; border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 3px solid white; flex-shrink: 0; }
+        .bp-1 { background: #dc2626; color: white; } /* سبايدر مان */
+        .bp-2 { background: #ec4899; color: white; } /* هالو كيتي */
+        .bp-3 { background: #1e40af; color: white; } /* أزرق ملكي */
+        .bp-4 { background: #16a34a; color: white; } /* أخضر أزهري */
+        .bp-5 { background: #f59e0b; color: white; } /* أصفر ذهبي */
+        .bp-6 { background: #7e22ce; color: white; } /* بنفسجي */
+        .bp-7 { background: #0ea5e9; color: white; } /* أزرق سماوي */
+        .bp-8 { background: #9f1239; color: white; } /* أحمر غامق */
+        .bp-9 { background: #475569; color: white; } /* رصاصي */
+        .bp-10 { background: #a78bfa; color: white; } /* موف فاتح */
+        .bp-11 { background: #fcd34d; color: #111827; } /* أصفر زاهي */
+        .bp-12 { background: #111827; color: white; } /* أسود فخم */
     </style>
 </head>
 <body class="text-slate-800">
@@ -48,12 +66,10 @@
     <header class="bg-emerald-900 text-white shadow-xl sticky top-0 z-50 border-b-4 border-amber-400">
         <div class="container mx-auto px-4 py-2.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-amber-400 rounded-2xl shadow-md flex items-center justify-center border-2 border-white/40 overflow-hidden">
-                    <span class="text-2xl font-black text-emerald-950">📖</span>
-                </div>
+                <div class="w-10 h-10 bg-amber-400 rounded-xl flex items-center justify-center shadow-md text-slate-900 font-black text-lg border border-white/40">🏫</div>
                 <div>
                     <span class="text-lg font-black block leading-none text-amber-300">رفيق</span>
-                    <span class="text-[9px] text-emerald-200 font-bold">دليلك الآمن والممتع في التعليم الأزهري</span>
+                    <span class="text-[9px] text-emerald-200 font-bold">منصة التعليم الذكي</span>
                 </div>
                 <span id="nav-status-badge" class="text-xs bg-emerald-950 px-3 py-1 rounded-xl border border-emerald-600 font-bold ml-2 hidden md:inline-block">بوابة المعهد الرئيسية 🌳</span>
             </div>
@@ -69,6 +85,32 @@
     </header>
 
     <main class="container mx-auto px-4 py-6 max-w-7xl relative">
+
+        <div id="view-institution-picker" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex justify-center items-center p-4 hidden">
+            <div class="bg-white rounded-[3rem] p-8 md:p-12 max-w-2xl w-full text-center shadow-2xl border-4 border-amber-400 space-y-6">
+                <span class="bg-amber-400 text-slate-900 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider">مرحباً بك يا محمد السعيد</span>
+                <h2 class="text-3xl font-black text-emerald-950">تخصيص الصرح التعليمي الافتراضي</h2>
+                <p class="text-xs text-slate-500">أدخل اسم معهدك الحقيقي ليظهر فوق بوابة المدرسة وفي لوحات الإدارة:</p>
+                
+                <div class="space-y-3 text-right">
+                    <label class="block text-xs font-bold text-slate-700">اسم المعهد أو المدرسة:</label>
+                    <input type="text" id="custom-school-name-input" value="معهد نور الإسلام النموذجي بدمياط الجديدة" class="w-full border-2 border-emerald-200 rounded-2xl px-4 py-3 text-xs focus:outline-none focus:border-emerald-600 font-bold">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <button onclick="selectInstitution('azhari')" class="azhari-theme p-6 rounded-3xl shadow-xl flex flex-col items-center gap-3 border-2 border-amber-300 hover:scale-105 transition">
+                        <span class="text-4xl">🕌</span>
+                        <h3 class="font-black text-lg">المعهد الأزهري</h3>
+                        <p class="text-[11px] text-emerald-100">هوية إسلامية، أخضر زمردي وذهبي، قرآن كريم وعلوم شرعية</p>
+                    </button>
+                    <button onclick="selectInstitution('general')" class="general-theme p-6 rounded-3xl shadow-xl flex flex-col items-center gap-3 border-2 border-amber-300 hover:scale-105 transition">
+                        <span class="text-4xl">🏫</span>
+                        <h3 class="font-black text-lg">المدرسة العامة</h3>
+                        <p class="text-[11px] text-blue-100">هوية تعليمية حديثة، مناهج وزارة التربية والتعليم</p>
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <div id="view-gate" class="school-gate-container rounded-[3rem] p-6 md:p-12 text-white shadow-2xl space-y-6 min-h-[85vh] flex flex-col justify-center items-center text-center relative overflow-hidden border-8 border-amber-400/40">
             
@@ -114,15 +156,15 @@
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
                     <div onclick="enterClassroom('1/1', 'صهيب محمد السعيد', 'الصف الأول الابتدائي', 'القرآن الكريم والتجويد الميسر', 'سورة الفاتحة • سورة الناس', 'حفظ السور القصيرة وتدريس التهجي')" class="bg-gradient-to-br from-emerald-600 to-emerald-800 p-3 rounded-2xl border-2 border-amber-300 shadow tilt-card cursor-pointer text-center">
                         <span class="text-xs font-black text-amber-200">🚪 الصف الأول</span>
-                        <p class="text-[9px] text-white">فصل 1/1 (🕷️ شنطة سبايدر)</p>
+                        <p class="text-[9px] text-white">فصل 1/1 (🕷️ سبايدر مان)</p>
                     </div>
                     <div onclick="enterClassroom('1/2', 'رقيه محمد السعيد', 'الصف الثاني الابتدائي', 'القرآن الكريم والفقه الميسر', 'سورة الفلق • سورة الإخلاص', 'أحكام الطهارة والوضوء المبسط')" class="bg-gradient-to-br from-pink-600 to-pink-800 p-3 rounded-2xl border-2 border-amber-300 shadow tilt-card cursor-pointer text-center">
                         <span class="text-xs font-black text-amber-200">🚪 الصف الثاني</span>
-                        <p class="text-[9px] text-white">فصل 1/2 (🎀 شنطة كيتي)</p>
+                        <p class="text-[9px] text-white">فصل 1/2 (🎀 هالو كيتي)</p>
                     </div>
                     <div onclick="enterClassroom('1/3', 'مصعب محمد السعيد', 'الصف الثالث الابتدائي', 'القرآن الكريم وأصول الدين', 'سورة النصر • سورة الكافرون', 'التربية الإسلامية والسيرة')" class="bg-gradient-to-br from-blue-600 to-blue-800 p-3 rounded-2xl border-2 border-amber-300 shadow tilt-card cursor-pointer text-center">
                         <span class="text-xs font-black text-amber-200">🚪 الصف الثالث</span>
-                        <p class="text-[9px] text-white">فصل 1/3 (🕷️ شنطة سبايدر)</p>
+                        <p class="text-[9px] text-white">فصل 1/3 (🕷️ سبايدر مان)</p>
                     </div>
                     <div onclick="enterClassroom('1/4', 'مصعب محمد السعيد', 'الصف الرابع الابتدائي', 'القرآن الكريم والعلوم الشرعية', 'سورة الملك • أحكام النون الساكنة', 'فقه المعاملات والحديث الشريف')" class="bg-gradient-to-br from-purple-600 to-purple-800 p-3 rounded-2xl border-2 border-amber-300 shadow tilt-card cursor-pointer text-center">
                         <span class="text-xs font-black text-amber-200">🚪 الصف الرابع</span>
@@ -194,10 +236,7 @@
             
             <div class="bg-white rounded-[2.5rem] p-6 shadow-xl border-t-8 border-amber-400 flex flex-col lg:flex-row justify-between items-center gap-6">
                 <div class="flex items-center gap-5">
-                    <div class="relative">
-                        <img id="student-profile-avatar-img" src="https://api.iconify.design/lucide:user-round-check.svg?color=%23065f46" alt="صورة الطالب" class="w-20 h-20 rounded-3xl object-cover border-4 border-amber-400 bg-emerald-50 p-2 shadow">
-                        <button onclick="openBackpackModal()" class="absolute -bottom-2 -right-2 bg-amber-500 hover:bg-amber-400 text-slate-900 text-[10px] font-black p-1.5 rounded-full shadow-lg transition" title="فتح الشنطة الذكية">🎒</button>
-                    </div>
+                    <div id="student-backpack-display" class="backpack-icon bp-1 shadow-lg">🕷️</div>
                     <div>
                         <div class="flex items-center gap-2">
                             <h1 class="text-2xl font-black text-emerald-900" id="active-student-name">صهيب محمد السعيد</h1>
@@ -208,8 +247,8 @@
                     </div>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="openProfileModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎨 اختر تصميمك (12 تصميماً)</button>
-                    <button onclick="openBackpackModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎒 شنطتي الذكية</button>
+                    <button onclick="openProfileModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎨 اختيار شنطتك (12 تصميماً)</button>
+                    <button onclick="openBackpackModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎒 شنطة المواد الـ 6</button>
                     <button onclick="openHallway()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-4 py-3 rounded-2xl transition">الرجوع للمبنى 🏛️</button>
                     <button onclick="goToGate()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold text-xs px-4 py-3 rounded-2xl transition">البوابة 🏫</button>
                 </div>
@@ -259,7 +298,7 @@
                     </h3>
                     <div id="classmates-list" class="space-y-2 max-h-96 overflow-y-auto pr-1">
                         <div class="bg-emerald-50/50 p-3 rounded-2xl flex items-center gap-3 border border-emerald-100">
-                            <span class="text-2xl">👦🏻</span>
+                            <span class="text-2xl">🎒</span>
                             <div>
                                 <span class="text-xs font-bold block text-emerald-900" id="classmate-main-name">صهيب محمد السعيد</span>
                                 <span class="text-[10px] text-emerald-600">متصل الآن 🟢 (الحالة: نشط)</span>
@@ -328,10 +367,10 @@
 
     <div id="profile-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-white rounded-[3rem] p-6 max-w-xl w-full shadow-2xl border-4 border-amber-400 space-y-4 max-h-[90vh] overflow-y-auto">
-            <h3 class="font-black text-xl text-emerald-900 border-r-4 border-amber-400 pr-3">اختر تصميمك المفضل (12 تصميماً لشخصيتك)</h3>
-            <p class="text-xs text-slate-500">اختر الشكل وصورة البطل المناسبة لك داخل الفصل:</p>
+            <h3 class="font-black text-xl text-emerald-900 border-r-4 border-amber-400 pr-3">اختر تصميم شنطتك المفضلة (12 تصميماً)</h3>
+            <p class="text-xs text-slate-500">اختر شكل ولون شنطتك المدرسية لتظهر بجوار اسمك داخل الفصل:</p>
             
-            <div class="grid grid-cols-3 md:grid-cols-4 gap-3" id="avatars-selection-grid">
+            <div class="grid grid-cols-3 md:grid-cols-4 gap-3" id="backpacks-selection-grid">
                 </div>
 
             <div class="space-y-3 pt-2 border-t">
@@ -353,7 +392,7 @@
                 <h3 id="backpack-modal-title" class="font-black text-xl text-emerald-900 flex items-center gap-2"><span>🎒</span> شنطتي الذكية وبنك الحصص الـ 6</h3>
                 <button onclick="closeBackpackModal()" class="text-slate-400 hover:text-rose-500 font-bold text-lg">✕</button>
             </div>
-            <p id="backpack-modal-subtitle" class="text-xs text-slate-500">اختر كتاب الحصة (من الحصة الأولى للرابعة والختامية) لمتابعة المعلم وحل الامتحانات:</p>
+            <p id="backpack-modal-subtitle" class="text-xs text-slate-500">اختر كتاب الحصة (من الأولى للسادسة) لمتابعة المعلم وحل الامتحانات:</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="backpack-books-grid">
                 </div>
@@ -390,7 +429,7 @@
             <div class="space-y-3">
                 <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-xs text-emerald-900">صهيب محمد السعيد (فصل 1/1 - شنطة سبايدر مان 🕷️)</h4>
+                        <h4 class="font-bold text-xs text-emerald-900">صهيب محمد السعيد (فصل 1/1)</h4>
                         <p class="text-[10px] text-emerald-700">حضور: 45 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
                     <button onclick="sendWhatsappReport('صهيب محمد السعيد', 'فصل 1/1', '45 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
@@ -398,7 +437,7 @@
 
                 <div class="bg-pink-50 p-4 rounded-2xl border border-pink-100 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-xs text-pink-900">رقيه محمد السعيد (فصل 1/2 - شنطة كيتي 🎀)</h4>
+                        <h4 class="font-bold text-xs text-pink-900">رقيه محمد السعيد (فصل 1/2)</h4>
                         <p class="text-[10px] text-pink-700">حضور: 50 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
                     <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', '50 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
@@ -406,7 +445,7 @@
 
                 <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-xs text-emerald-900">مصعب محمد السعيد (فصل 1/3 - شنطة سبايدر مان 🕷️)</h4>
+                        <h4 class="font-bold text-xs text-emerald-900">مصعب محمد السعيد (فصل 1/3)</h4>
                         <p class="text-[10px] text-emerald-700">حضور: 60 دقيقة | تفاعل: متفوق | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
                     <button onclick="sendWhatsappReport('مصعب محمد السعيد', 'فصل 1/3', '60 دقيقة', 'متفوق - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
@@ -426,9 +465,23 @@
         let supabaseClient = null;
         let activeClassNum = '1/1';
         let studentSessionStart = Date.now();
-        let selectedAvatar = "👦🏻";
+        let currentBackpackClass = 'bp-1';
+        let currentBackpackEmoji = '🕷️';
 
-        const availableAvatars = ["👦🏻", "👧🏻", "👦🏽", "👧🏽", "🧒🏼", "🧒🏽", "🦸‍♂️", "🦸‍♀️", "🧸", "🌟", "🚀", "🐱"];
+        const backpacksData = [
+            { id: 'bp-1', name: 'سبايدر مان', emoji: '🕷️', class: 'bp-1' },
+            { id: 'bp-2', name: 'هالو كيتي', emoji: '🎀', class: 'bp-2' },
+            { id: 'bp-3', name: 'أزرق ملكي', emoji: '🎒', class: 'bp-3' },
+            { id: 'bp-4', name: 'أخضر أزهري', emoji: '🌿', class: 'bp-4' },
+            { id: 'bp-5', name: 'أصفر ذهبي', emoji: '⭐', class: 'bp-5' },
+            { id: 'bp-6', name: 'بنفسجي ملكي', emoji: '👑', class: 'bp-6' },
+            { id: 'bp-7', name: 'أزرق سماوي', emoji: '☁️', class: 'bp-7' },
+            { id: 'bp-8', name: 'قرمزي فخم', emoji: '💎', class: 'bp-8' },
+            { id: 'bp-9', name: 'رصاصي عصري', emoji: '⚡', class: 'bp-9' },
+            { id: 'bp-10', name: 'موف هادئ', emoji: '🌙', class: 'bp-10' },
+            { id: 'bp-11', name: 'أصفر زاهي', emoji: '☀️', class: 'bp-11' },
+            { id: 'bp-12', name: 'أسود أنيق', emoji: '🔥', class: 'bp-12' }
+        ];
 
         try {
             if (typeof supabase !== 'undefined') {
@@ -443,30 +496,40 @@
         } catch(e) { console.log('وضع التشغيل المحلي نشط'); }
 
         window.addEventListener('DOMContentLoaded', () => {
+            const savedInst = localStorage.getItem('school_institution');
             const savedSchoolName = localStorage.getItem('custom_school_name');
-            applySchoolName(savedSchoolName || "معهد نور الإسلام النموذجي بدمياط الجديدة");
+            
+            if(!savedInst) {
+                document.getElementById('view-institution-picker').classList.remove('hidden');
+            } else {
+                applySchoolName(savedSchoolName || "معهد نور الإسلام النموذجي بدمياط الجديدة");
+            }
             initTiltEffect();
-            buildAvatarsGrid();
+            buildBackpacksGrid();
         });
 
-        function buildAvatarsGrid() {
-            const grid = document.getElementById('avatars-selection-grid');
+        function buildBackpacksGrid() {
+            const grid = document.getElementById('backpacks-selection-grid');
             if(!grid) return;
-            grid.innerHTML = availableAvatars.map(av => `
-                <div onclick="selectAvatarItem('${av}')" class="p-3 bg-emerald-50 hover:bg-emerald-100 rounded-2xl text-center text-3xl cursor-pointer border-2 border-emerald-200 transition">
-                    ${av}
+            grid.innerHTML = backpacksData.map(bp => `
+                <div onclick="selectStudentBackpack('${bp.class}', '${bp.emoji}')" class="p-4 bg-slate-50 hover:bg-emerald-50 rounded-2xl text-center cursor-pointer border-2 border-slate-200 hover:border-emerald-500 transition flex flex-col items-center gap-2">
+                    <div class="backpack-icon ${bp.class}">${bp.emoji}</div>
+                    <span class="text-[11px] font-bold text-slate-700">${bp.name}</span>
                 </div>
             `).join('');
         }
 
-        function selectAvatarItem(av) {
-            selectedAvatar = av;
-            const imgEl = document.getElementById('student-profile-avatar-img');
-            if(imgEl) {
-                // عرض الأيقونة المختارة كرمز إيموجي كبير داخل الشعار
-                imgEl.src = `https://api.iconify.design/lucide:user-round-check.svg?color=%23065f46`;
+        function selectStudentBackpack(bpClass, bpEmoji) {
+            currentBackpackClass = bpClass;
+            currentBackpackEmoji = bpEmoji;
+            
+            const displayEl = document.getElementById('student-backpack-display');
+            if(displayEl) {
+                displayEl.className = `backpack-icon ${bpClass} shadow-lg`;
+                displayEl.innerText = bpEmoji;
             }
-            alert(`تم اختيار تصميم الملف الشخصي بنجاح (${av})!`);
+            alert(`تم تغيير تصميم شنطتك بنجاح! (${bpEmoji})`);
+            closeProfileModal();
         }
 
         function initTiltEffect() {
@@ -486,6 +549,16 @@
                     card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
                 });
             });
+        }
+
+        function selectInstitution(type) {
+            localStorage.setItem('school_institution', type);
+            const customNameInput = document.getElementById('custom-school-name-input');
+            const schoolName = customNameInput ? customNameInput.value : "معهد نور الإسلام النموذجي بدمياط الجديدة";
+            localStorage.setItem('custom_school_name', schoolName);
+            
+            document.getElementById('view-institution-picker').classList.add('hidden');
+            applySchoolName(schoolName);
         }
 
         function applySchoolName(name) {
@@ -565,44 +638,28 @@
             document.getElementById('classroom-main-text').innerText = mainText;
             document.getElementById('classroom-desc').innerText = descText;
             document.getElementById('classmate-main-name').innerText = `${fullName} (أنت)`;
+
+            // تحديث أيقونة الشنطة داخل الفصل
+            const displayEl = document.getElementById('student-backpack-display');
+            if(displayEl) {
+                displayEl.className = `backpack-icon ${currentBackpackClass} shadow-lg`;
+                displayEl.innerText = currentBackpackEmoji;
+            }
         }
 
-        // إدارة الشنطة التعليمية الذكية (كتب الـ 6 حصص سبايدر مان / هالو كيتي)
+        // إدارة الشنطة التعليمية الذكية (كتب الـ 6 حصص)
         function openBackpackModal() {
             const modal = document.getElementById('backpack-modal');
-            const containerBox = document.getElementById('backpack-container-box');
-            const titleEl = document.getElementById('backpack-modal-title');
-            const subtitleEl = document.getElementById('backpack-modal-subtitle');
             const grid = document.getElementById('backpack-books-grid');
             
-            let books = [];
-            if(activeClassNum === '1/2') {
-                // رقيه -> شنطة هالو كيتي الوردية (🎀)
-                containerBox.className = "bg-white rounded-[3rem] p-8 max-w-4xl w-full shadow-2xl border-4 border-pink-400 space-y-6 max-h-[90vh] overflow-y-auto";
-                titleEl.innerHTML = `<span>🎒🎀</span> شنطة هالو كيتي الوردية (بنك كتب الـ 6 حصص الأساسية)`;
-                subtitleEl.innerText = "اختر كتاب الحصة (من الأولى للسادسة) للتصفح وحل الامتحانات التفاعلية يا بطلة:";
-                books = [
-                    { period: "الحصة الأولى", title: "القرآن الكريم (أجزاء عم وتدبر)", desc: "تلاوة وحفظ سور الفاتحة والقصار" },
-                    { period: "الحصة الثانية", title: "الفقه الميسر للفتيات", desc: "آداب الطهارة والعبادات المبسطة للبنات" },
-                    { period: "الحصة الثالثة", title: "اللغة العربية والتهجي الرائع", desc: "القواعد الإملائية والقصص القصيرة" },
-                    { period: "الحصة الرابعة", title: "الحساب والرياضيات الممتعة", desc: "الأرقام والأشكال الهندسية والعد" },
-                    { period: "الحصة الخامسة", title: "التوحيد والسيرة النبوية العطرة", desc: "مكارم الأخلاق وقصص الصحابيات والصحابة" },
-                    { period: "الحصة السادسة", title: "الأنشطة والتربية الفنية", desc: "الرسم والأذكار والآداب الإسلامية العامة" }
-                ];
-            } else {
-                // صهيب أو مصعب أو البقية -> شنطة سبايدر مان (🕷️)
-                containerBox.className = "bg-white rounded-[3rem] p-8 max-w-4xl w-full shadow-2xl border-4 border-red-500 space-y-6 max-h-[90vh] overflow-y-auto";
-                titleEl.innerHTML = `<span>🎒🕷️</span> شنطة سبايدر مان الذكية (بنك كتب الـ 6 حصص الأساسية)`;
-                subtitleEl.innerText = "اختر كتاب الحصة (من الأولى للسادسة) للتصفح وحل الامتحانات التفاعلية:";
-                books = [
-                    { period: "الحصة الأولى", title: "القرآن الكريم والتجويد", desc: "الحفظ والتلاوة وأحكام النون الساكنة" },
-                    { period: "الحصة الثانية", title: "الفقه الشافعي ومبادئ العبادات", desc: "أحكام الطهارة والوضوء والصلوات الخمس" },
-                    { period: "الحصة الثالثة", title: "اللغة العربية والخط والتهجي", desc: "القواعد النحوية والإنشاء والخط الجميل" },
-                    { period: "الحصة الرابعة", title: "الحساب والرياضيات المبسطة", desc: "العمليات الحسابية والمسائل الذهنية" },
-                    { period: "الحصة الخامسة", title: "العقيدة والتوحيد والأذكار", desc: "أركان الإيمان وحفظ الأذكار النبوية اليومية" },
-                    { period: "الحصة السادسة", title: "التربية الإسلامية والأنشطة", desc: "السيرة النبوية وقصص الأنبياء والأنشطة" }
-                ];
-            }
+            const books = [
+                { period: "الحصة الأولى", title: "القرآن الكريم والتجويد", desc: "الحفظ والتلاوة وأحكام النون الساكنة" },
+                { period: "الحصة الثانية", title: "الفقه الشافعي ومبادئ العبادات", desc: "أحكام الطهارة والوضوء والصلوات الخمس" },
+                { period: "الحصة الثالثة", title: "اللغة العربية والخط والتهجي", desc: "القواعد النحوية والإنشاء والخط الجميل" },
+                { period: "الحصة الرابعة", title: "الحساب والرياضيات المبسطة", desc: "العمليات الحسابية والمسائل الذهنية" },
+                { period: "الحصة الخامسة", title: "العقيدة والتوحيد والأذكار", desc: "أركان الإيمان وحفظ الأذكار النبوية اليومية" },
+                { period: "الحصة السادسة", title: "التربية الإسلامية والأنشطة", desc: "السيرة النبوية وقصص الأنبياء والأنشطة" }
+            ];
 
             grid.innerHTML = books.map(b => `
                 <div onclick="openBookReader('${b.period}: ${b.title}', '${b.desc}')" class="bg-gradient-to-br from-slate-50 to-emerald-50 border-2 border-emerald-200 p-4 rounded-2xl cursor-pointer hover:shadow-lg transition space-y-2 text-right">
@@ -627,7 +684,6 @@
 
         function closeBookViewer() { document.getElementById('book-viewer-modal').classList.add('hidden'); }
 
-        // نظام الدردشة داخل الفصل
         function sendChatMessage() {
             const input = document.getElementById('chat-msg-input');
             const chatBox = document.getElementById('classroom-chat-box');
@@ -639,7 +695,6 @@
             }
         }
 
-        // إنهاء اليوم الدراسي وإرسال التقرير لولي الأمر تلقائياً عبر واتساب
         function endSchoolDayReport() {
             const minutes = Math.round((Date.now() - studentSessionStart) / 60000) || 45;
             const studentName = document.getElementById('active-student-name').innerText;
