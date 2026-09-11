@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفيق — رفيقك نحو المعرفة ودليلك الآمن في التعليم الأزهري والعام</title>
+    <title>رفيق — منصة التعليم الذكي المتكاملة للأبناء</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -56,22 +56,21 @@
     <header class="bg-emerald-900 text-white shadow-xl sticky top-0 z-50 border-b-4 border-amber-400">
         <div class="container mx-auto px-4 py-2.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-tr from-amber-400 to-amber-200 rounded-2xl shadow-md flex items-center justify-center border-2 border-white/40 text-2xl font-black text-emerald-950">
-                    📖
-                </div>
+                <div class="w-12 h-12 bg-gradient-to-tr from-amber-400 to-amber-200 rounded-2xl shadow-md flex items-center justify-center border-2 border-white/40 text-2xl font-black text-emerald-950">📖</div>
                 <div>
                     <span class="text-lg font-black block leading-none text-amber-300">رفيق</span>
-                    <span class="text-[9px] text-emerald-200 font-bold">رفيقك نحو المعرفة — دليلك الآمن والشيقة</span>
+                    <span class="text-[9px] text-emerald-200 font-bold">دليلك الآمن والشيقة للتعليم</span>
                 </div>
                 <span id="nav-status-badge" class="text-xs bg-emerald-950 px-3 py-1 rounded-xl border border-emerald-600 font-bold ml-2 hidden md:inline-block">بوابة المعهد الرئيسية 🌳</span>
             </div>
-            <div class="flex items-center gap-2 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-700">
-                <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">البوابة 🏫</button>
-                <button onclick="openHallway()" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الأدوار 🏛️</button>
-                <button onclick="openBackpackModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400 transition shadow">🎒 شنطتي الذكية</button>
-                <button onclick="openWhatsappReportsModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition shadow">تقارير واتساب 📱</button>
-                <button onclick="switchRole('teacher')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">المعلمين 👨‍🏫</button>
-                <button onclick="switchRole('admin')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الكنترول 🛡️</button>
+            <div class="flex items-center gap-1.5 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-700">
+                <button onclick="goToGate()" class="text-xs font-bold px-2.5 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">البوابة 🏫</button>
+                <button onclick="openHallway()" class="text-xs font-bold px-2.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الأدوار 🏛️</button>
+                <button onclick="openParentDashboard()" class="text-xs font-bold px-2.5 py-1.5 rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400 transition shadow">👨‍👦‍👦 لوحة ولي الأمر</button>
+                <button onclick="openBackpackModal()" class="text-xs font-bold px-2.5 py-1.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500 transition shadow">🎒 شنطتي</button>
+                <button onclick="openWhatsappReportsModal()" class="text-xs font-bold px-2.5 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition shadow">واتساب 📱</button>
+                <button onclick="switchRole('teacher')" class="text-xs font-bold px-2.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">المعلم 👨‍🏫</button>
+                <button onclick="switchRole('admin')" class="text-xs font-bold px-2.5 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الكنترول 🛡️</button>
             </div>
         </div>
     </header>
@@ -114,11 +113,10 @@
             <div class="space-y-2 mt-6 relative z-10">
                 <span class="bg-amber-400 text-slate-900 text-xs font-black px-4 py-1.5 rounded-full shadow-lg inline-block">ولي الأمر: محمد السعيد</span>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wide">بوابة معهد الأزهر الشريف الذكي</h1>
-                <p class="text-emerald-100 text-xs">رفيقك نحو المعرفة — اختر البوابة الرئيسية أو أبواب الحضانة والصفوف الابتدائية:</p>
+                <p class="text-emerald-100 text-xs">اختر البوابة الرئيسية أو أبواب الحضانة والصفوف الابتدائية:</p>
             </div>
 
             <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-4 items-center relative z-10">
-                
                 <div onclick="enterClassroom('KG1', 'صهيب محمد السعيد (KG1)', 'مرحلة الحضانة (KG1)', 'القاعدة النورانية والتهجي', 'أَ • بـَ • تـَ', 'تأسيس الحروف الهجائية')" class="bg-gradient-to-b from-amber-600 to-amber-800 p-4 rounded-3xl border-4 border-amber-300 shadow-xl tilt-card cursor-pointer text-center space-y-2">
                     <span class="bg-amber-300 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full">بوابة خاصة</span>
                     <h3 class="font-black text-sm">🚪 باب KG 1</h3>
@@ -140,7 +138,6 @@
                     <h3 class="font-black text-sm">🚪 باب KG 2</h3>
                     <p class="text-[10px] text-amber-100">تأسيس متقدم للأطفال</p>
                 </div>
-
             </div>
 
             <div class="w-full max-w-5xl pt-3 border-t border-emerald-700/50 relative z-10 space-y-2">
@@ -233,16 +230,28 @@
                         <div class="flex items-center gap-2">
                             <h1 class="text-2xl font-black text-emerald-900" id="active-student-name">صهيب محمد السعيد</h1>
                             <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full" id="active-grade-display">حضانة أزهرية</span>
+                            <span class="text-xs bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-full shadow-sm">🌟 24 نجمة | 🏅 وسام الحافظ الصغير</span>
                         </div>
                         <p class="text-slate-500 text-xs mt-1">ولي الأمر: محمد السعيد | المعهد المسجل: <span id="student-school-display-tag" class="font-bold text-emerald-800">معهد نور الإسلام النموذجي بدمياط الجديدة</span></p>
-                        <p class="text-amber-600 text-xs mt-0.5 font-bold">🟢 واتساب ولي الأمر مفعل للتذكير والمتابعة والتقرير اليومي</p>
                     </div>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="openProfileModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎨 اختيار شنطتك (12 تصميماً)</button>
+                    <button onclick="openProfileModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎨 اختيار شنطتك</button>
                     <button onclick="openBackpackModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎒 شنطة المواد الـ 6</button>
-                    <button onclick="openHallway()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-4 py-3 rounded-2xl transition">الرجوع للمبنى 🏛️</button>
+                    <button onclick="openHallway()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-4 py-3 rounded-2xl transition">المبنى 🏛️</button>
                     <button onclick="goToGate()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold text-xs px-4 py-3 rounded-2xl transition">البوابة 🏫</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-200">
+                <h4 class="font-black text-xs text-emerald-900 mb-3 flex items-center gap-2"><span>📅</span> جدول الحصص اليومي التفاعلي (الحصص الـ 6 الأساسية):</h4>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-2 text-center text-xs">
+                    <div class="p-2.5 bg-emerald-700 text-white rounded-xl font-bold shadow">الحصة 1 (قرآن 🟢)</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold">الحصة 2 (فقه)</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold">الحصة 3 (عربية)</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold">الحصة 4 (حساب)</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold">الحصة 5 (توحيد)</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold">الحصة 6 (أنشطة)</div>
                 </div>
             </div>
 
@@ -305,6 +314,64 @@
             </div>
         </div>
 
+        <div id="view-parent-dashboard" class="space-y-6 hidden">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-[2.5rem] p-8 text-white shadow-xl space-y-2">
+                <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">غرفة ولي الأمر المركزية 👨‍👦‍👦</span>
+                <h1 class="text-3xl font-black">مرحباً بالأستاذ / محمد السعيد</h1>
+                <p class="text-emerald-100 text-xs">متابعة حضور ودرجات أطفالك الثلاثة (صهيب، رقيه، مصعب) في شاشة واحدة:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="backpack-icon bp-1 text-2xl">🕷️</div>
+                        <div>
+                            <h3 class="font-black text-base text-emerald-900">صهيب محمد السعيد</h3>
+                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">فصل 1/1 (حضانة)</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs bg-slate-50 p-4 rounded-2xl">
+                        <div class="flex justify-between"><span>نسبة الحضور اليومي:</span><span class="font-bold text-emerald-700">100% (45 دقيقة)</span></div>
+                        <div class="flex justify-between"><span>درجات امتحانات الحصص الـ 6:</span><span class="font-bold text-amber-600">ممتاز (58/60)</span></div>
+                        <div class="flex justify-between"><span>النجوم والأوسمة:</span><span class="font-bold text-amber-500">🌟 24 نجمة</span></div>
+                    </div>
+                    <button onclick="sendWhatsappReport('صهيب محمد السعيد', 'فصل 1/1', '45 دقيقة', 'ممتاز')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">إرسال تقرير صهيب للواتساب 📱</button>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-pink-100 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="backpack-icon bp-2 text-2xl">🎀</div>
+                        <div>
+                            <h3 class="font-black text-base text-pink-900">رقيه محمد السعيد</h3>
+                            <span class="text-[10px] bg-pink-100 text-pink-800 px-2 py-0.5 rounded-full font-bold">فصل 1/2 (الثاني الابتدائي)</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs bg-slate-50 p-4 rounded-2xl">
+                        <div class="flex justify-between"><span>نسبة الحضور اليومي:</span><span class="font-bold text-emerald-700">100% (50 دقيقة)</span></div>
+                        <div class="flex justify-between"><span>درجات امتحانات الحصص الـ 6:</span><span class="font-bold text-amber-600">متفوقة (60/60)</span></div>
+                        <div class="flex justify-between"><span>النجوم والأوسمة:</span><span class="font-bold text-amber-500">🌟 30 نجمة</span></div>
+                    </div>
+                    <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', '50 دقيقة', 'متفوقة')" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">إرسال تقرير رقيه للواتساب 📱</button>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-blue-100 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="backpack-icon bp-3 text-2xl">🎒</div>
+                        <div>
+                            <h3 class="font-black text-base text-blue-900">مصعب محمد السعيد</h3>
+                            <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">فصل 1/3 (الرابع/الخامس)</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs bg-slate-50 p-4 rounded-2xl">
+                        <div class="flex justify-between"><span>نسبة الحضور اليومي:</span><span class="font-bold text-emerald-700">100% (60 دقيقة)</span></div>
+                        <div class="flex justify-between"><span>درجات امتحانات الحصص الـ 6:</span><span class="font-bold text-amber-600">ممتاز (59/60)</span></div>
+                        <div class="flex justify-between"><span>النجوم والأوسمة:</span><span class="font-bold text-amber-500">🌟 28 نجمة</span></div>
+                    </div>
+                    <button onclick="sendWhatsappReport('مصعب محمد السعيد', 'فصل 1/3', '60 دقيقة', 'ممتاز')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">إرسال تقرير مصعب للواتساب 📱</button>
+                </div>
+            </div>
+        </div>
+
         <div id="view-teacher" class="space-y-6 hidden">
             <div class="bg-gradient-to-r from-slate-800 to-emerald-900 rounded-[2.5rem] p-6 text-white shadow-xl flex justify-between items-center">
                 <div>
@@ -362,8 +429,7 @@
             <h3 class="font-black text-xl text-emerald-900 border-r-4 border-amber-400 pr-3">اختر تصميم شنطتك المفضلة (12 تصميماً)</h3>
             <p class="text-xs text-slate-500">اختر شكل ولون شنطتك المدرسية لتظهر بجوار اسمك داخل الفصل:</p>
             
-            <div class="grid grid-cols-3 md:grid-cols-4 gap-3" id="backpacks-selection-grid">
-                </div>
+            <div class="grid grid-cols-3 md:grid-cols-4 gap-3" id="backpacks-selection-grid"></div>
 
             <div class="space-y-3 pt-2 border-t">
                 <div>
@@ -384,10 +450,9 @@
                 <h3 id="backpack-modal-title" class="font-black text-xl text-emerald-900 flex items-center gap-2"><span>🎒</span> شنطتي الذكية وبنك الحصص الـ 6</h3>
                 <button onclick="closeBackpackModal()" class="text-slate-400 hover:text-rose-500 font-bold text-lg">✕</button>
             </div>
-            <p id="backpack-modal-subtitle" class="text-xs text-slate-500">اختر كتاب الحصة (من الأولى للسادسة) لمتابعة المعلم وحل الامتحانات:</p>
+            <p id="backpack-modal-subtitle" class="text-xs text-slate-500">اختر كتاب الحصة (من الأولى للسادسة) لمتابعة المعلم وتسجيل التلاوة:</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="backpack-books-grid">
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="backpack-books-grid"></div>
 
             <div class="flex justify-end pt-2">
                 <button onclick="closeBackpackModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-5 py-2.5 rounded-xl transition">إغلاق الشنطة</button>
@@ -404,7 +469,14 @@
             <div class="bg-amber-50 border-2 border-amber-200 p-8 rounded-3xl text-center space-y-4">
                 <span class="text-xs bg-amber-400 text-slate-900 px-3 py-1 rounded-full font-bold">صفحة تفاعلية متزامنة مع المعلم</span>
                 <div class="text-xl font-black text-slate-800 my-4" id="viewer-book-content">محتوى الحصة والتدريبات والامتحانات...</div>
-                <p class="text-xs text-slate-500">تابع مع المعلم على السبورة الحية في نفس اللحظة وحل اختبار الحصة.</p>
+                
+                <div class="p-4 bg-white rounded-2xl border border-emerald-200 space-y-2">
+                    <h5 class="font-bold text-xs text-emerald-900">🎙️ ركن تسجيل التلاوة الصوتية (اختبار التجويد):</h5>
+                    <div class="flex justify-center gap-2">
+                        <button onclick="alert('🔴 جاري بدء تسجيل تلاوتك القرآنية... تكلم الآن.')" class="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs px-4 py-2 rounded-xl">بدء التسجيل 🔴</button>
+                        <button onclick="alert('✅ تم إرسال تسجيلك الصوتي بنجاح إلى شيخ المعهد للتقييم!')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl">إرسال للمعلم 📤</button>
+                    </div>
+                </div>
             </div>
             <div class="flex justify-between items-center pt-2">
                 <button onclick="alert('تم تسليم امتحان الحصة وحفظ الدرجة بنجاح في سجل الطالب! 🌟')" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl transition">تسليم امتحان الحصة ✍️</button>
@@ -424,7 +496,7 @@
                         <h4 class="font-bold text-xs text-emerald-900">صهيب محمد السعيد (فصل 1/1)</h4>
                         <p class="text-[10px] text-emerald-700">حضور: 45 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
-                    <button onclick="sendWhatsappReport('صهيب محمد السعيد', 'فصل 1/1', '45 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
+                    <button onclick="sendWhatsappReport('صهيب محمد السعيد', 'فصل 1/1', '45 دقيقة', 'ممتاز')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
 
                 <div class="bg-pink-50 p-4 rounded-2xl border border-pink-100 flex justify-between items-center">
@@ -432,15 +504,15 @@
                         <h4 class="font-bold text-xs text-pink-900">رقيه محمد السعيد (فصل 1/2)</h4>
                         <p class="text-[10px] text-pink-700">حضور: 50 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
-                    <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', '50 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
+                    <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', '50 دقيقة', 'ممتاز')" class="bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
 
-                <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
+                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-xs text-emerald-900">مصعب محمد السعيد (فصل 1/3)</h4>
-                        <p class="text-[10px] text-emerald-700">حضور: 60 دقيقة | تفاعل: متفوق | حالة الشاشة: نشط طوال الحصة.</p>
+                        <h4 class="font-bold text-xs text-blue-900">مصعب محمد السعيد (فصل 1/3)</h4>
+                        <p class="text-[10px] text-blue-700">حضور: 60 دقيقة | تفاعل: متفوق | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
-                    <button onclick="sendWhatsappReport('مصعب محمد السعيد', 'فصل 1/3', '60 دقيقة', 'متفوق - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
+                    <button onclick="sendWhatsappReport('مصعب محمد السعيد', 'فصل 1/3', '60 دقيقة', 'متفوق')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
             </div>
 
@@ -593,7 +665,7 @@
         }
 
         function hideAllViews() {
-            const views = ['view-gate', 'view-hallway', 'view-classroom', 'view-teacher', 'view-admin'];
+            const views = ['view-gate', 'view-hallway', 'view-classroom', 'view-parent-dashboard', 'view-teacher', 'view-admin'];
             views.forEach(v => {
                 const el = document.getElementById(v);
                 if(el) el.classList.add('hidden');
@@ -612,6 +684,12 @@
             document.getElementById('view-hallway').classList.remove('hidden');
             document.getElementById('nav-status-badge').innerText = "مبنى الأدوار 🏛️";
             setTimeout(initTiltEffect, 100);
+        }
+
+        function openParentDashboard() {
+            hideAllViews();
+            document.getElementById('view-parent-dashboard').classList.remove('hidden');
+            document.getElementById('nav-status-badge').innerText = "غرفة ولي الأمر المركزي 👨‍👦‍👦";
         }
 
         function enterClassroom(classNum, fullName, gradeText, subText, mainText, descText) {
@@ -668,7 +746,7 @@
         function openBookReader(title, desc) {
             closeBackpackModal();
             document.getElementById('viewer-book-title').innerText = `📖 ${title}`;
-            document.getElementById('viewer-book-content').innerText = `${desc} — (تتم مزامنة محتوى الصفحة وحل الامتحانات التفاعلية مع سبورة المعلم الحية في نفس اللحظة).`;
+            document.getElementById('viewer-book-content').innerText = `${desc} — (تتم مزامنة محتوى الصفحة وحل الامتحانات التفاعلية وتسجيل التلاوة مع سبورة المعلم الحية).`;
             document.getElementById('book-viewer-modal').classList.remove('hidden');
         }
 
