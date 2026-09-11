@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>رفيق — منصة التعليم الذكي المتكاملة للأبناء (النسخة الكاملة النهائية)</title>
+    <title>رفيق — منصة التعليم الذكي المتكاملة (بالشرح الصوتي المصري والمنهج الكامل)</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#065f46">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -70,7 +70,7 @@
                 <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-tr from-amber-400 to-amber-200 rounded-2xl shadow-md flex items-center justify-center border-2 border-white/40 text-xl md:text-2xl font-black text-emerald-950 animate-float">📖</div>
                 <div>
                     <span class="text-base md:text-lg font-black block leading-none text-amber-300">رفيق</span>
-                    <span class="text-[8px] md:text-[9px] text-emerald-200 font-bold">دليلك الآمن نحو المعرفة</span>
+                    <span class="text-[8px] md:text-[9px] text-emerald-200 font-bold">شرح صوتي مصري لجميع الحصص</span>
                 </div>
                 <span id="nav-status-badge" class="text-xs bg-emerald-950 px-3 py-1 rounded-xl border border-emerald-600 font-bold ml-2 hidden lg:inline-block">بوابة المعهد الرئيسية 🌳</span>
             </div>
@@ -78,7 +78,7 @@
                 <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">البوابة 🏫</button>
                 <button onclick="openHallway()" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الأدوار 🏛️</button>
                 <button onclick="openParentDashboard()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400 transition shadow">👨‍👦‍👦 ولي الأمر</button>
-                <button onclick="openBackpackModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500 transition shadow">🎒 شنطتي الذكية</button>
+                <button onclick="openBackpackModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500 transition shadow">🎒 شنطتي الذكية (7 حصص)</button>
                 <button onclick="openWhatsappReportsModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition shadow">واتساب 📱</button>
                 <button onclick="switchRole('teacher')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">المعلم 👨‍🏫</button>
                 <button onclick="switchRole('admin')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الكنترول 🛡️</button>
@@ -119,9 +119,9 @@
             </div>
 
             <div class="space-y-2 mt-6 relative z-10">
-                <span class="bg-amber-400 text-slate-900 text-xs font-black px-4 py-1.5 rounded-full shadow-lg inline-block animate-float">منصة رفيق الذكية (صوت وشرح واختبارات) 🌟</span>
-                <h1 class="text-2xl md:text-4xl font-black tracking-wide">بوابة المعهد (اختر فصلك الدراسي المستقل)</h1>
-                <p class="text-emerald-100 text-xs">22 طالباً في الفصل - ديسكات منفصلة تماماً بدون اختلاط:</p>
+                <span class="bg-amber-400 text-slate-900 text-xs font-black px-4 py-1.5 rounded-full shadow-lg inline-block animate-float">منصة رفيق التعليمية (بشرح صوتي مصري كامل) 🌟</span>
+                <h1 class="text-2xl md:text-4xl font-black tracking-wide">بوابة المعهد (فصول منفصلة: بنين وبنات بدون اختلاط)</h1>
+                <p class="text-emerald-100 text-xs">22 طالباً في كل فصل - ديسكات مستقلة تماماً:</p>
             </div>
 
             <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-4 items-center relative z-10">
@@ -149,7 +149,7 @@
             </div>
 
             <div class="w-full max-w-5xl pt-3 border-t border-emerald-700/50 relative z-10 space-y-2">
-                <span class="text-xs font-bold text-amber-300 block">فصول المرحلة الابتدائية (منهج الحصص الـ 7 الكامل):</span>
+                <span class="text-xs font-bold text-amber-300 block">فصول المرحلة الابتدائية (منهج الحصص الـ 7 الكامل لجميع المواد):</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div onclick="enterClassroom('1/1', 'صهيب محمد السعيد', 'الصف الأول الابتدائي', 'القرآن والتجويد', 'سورة الفاتحة', 'الشيخ أحمد')" class="bg-gradient-to-br from-emerald-600 to-emerald-800 p-3 rounded-2xl border-2 border-amber-300 shadow cursor-pointer text-center">
                         <span class="text-xs font-black text-amber-200">🚪 الأول الابتدائي</span>
@@ -220,16 +220,16 @@
             <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-200">
                 <h4 class="font-black text-xs text-emerald-900 mb-3 flex items-center justify-between">
                     <span>📅 جدول الحصص اليومي الكامل (7 حصص دراسية):</span>
-                    <button onclick="playAudioExplanation('مرحباً بك يا بطل في حصص اليوم. اختر الحصة واضغط على زر الاستماع للصوت.')" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-1.5 rounded-xl text-xs shadow">🔊 استمع للجدول بصوت المعلم</button>
+                    <button onclick="playAudioExplanation('أهلاً بكم يا أبطال في حصص اليوم. اختر الحصة واضغط على زر الاستماع للصوت لنشرح الدرس معاً.')" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-1.5 rounded-xl text-xs shadow">🔊 استمع للجدول بصوت المعلم المصري</button>
                 </h4>
                 <div class="grid grid-cols-2 md:grid-cols-7 gap-2 text-center text-xs">
-                    <div class="p-2.5 bg-emerald-700 text-white rounded-xl font-bold shadow cursor-pointer" onclick="playAudioExplanation('الحصة الأولى: القرآن الكريم وتجويده. سورة الملك وأحكام النون الساكنة')">1. قرآن وتجويد 🟢</div>
-                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الثانية: اللغة العربية. المبتدأ والخبر ونصوص القراءة')">2. لغة عربية</div>
-                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الثالثة: الرياضيات. الكسور الاعتيادية والقيمة المكانية')">3. رياضيات</div>
-                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الرابعة: التربية الإسلامية. فقه الصيام وأحكام الطهارة')">4. تربية إسلامية</div>
-                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الخامسة: الدراسات الاجتماعية. مظاهر سطح مصر وعناصر المناخ')">5. دراسات اجتماعية</div>
-                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة السادسة: العلوم. الجهاز الهضمي والتنفسي وطاقة الحركة')">6. علوم</div>
-                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة السابعة: اللغة الإنجليزية. منهج كونكت فور')">7. إنجليزي (Connect)</div>
+                    <div class="p-2.5 bg-emerald-700 text-white rounded-xl font-bold shadow cursor-pointer" onclick="playAudioExplanation('الحصة الأولى يا أبطال: القرآن الكريم وتجويده. بنقرا سورة الملك ونتعلم أحكام النون الساكنة والتنوين.')">1. قرآن وتجويد 🟢</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الثانية: اللغة العربية. هندرس النهاردة المبتدأ والخبر ونصوص القراءة الجميلة.')">2. لغة عربية</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الثالثة: الرياضيات. هنتدرب على الكسور الاعتيادية والقيمة المكانية للأعداد.')">3. رياضيات</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الرابعة: التربية الإسلامية. هنتعلم أحكام الصيام والوضوء والطهارة.')">4. تربية إسلامية</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة الخامسة: الدراسات الاجتماعية. هنتكلم عن مظاهر سطح مصر وعناصر المناخ.')">5. دراسات اجتماعية</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة السادسة: العلوم. هنعرف تفاصيل الجهاز الهضمي والتنفسي وطاقة الحركة.')">6. علوم</div>
+                    <div class="p-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold cursor-pointer" onclick="playAudioExplanation('الحصة السابعة: اللغة الإنجليزية. منهج كونكت فور والقصص الممتعة.')">7. إنجليزي (Connect)</div>
                 </div>
             </div>
 
@@ -241,7 +241,7 @@
                             
                             <div class="flex justify-center items-center gap-3">
                                 <span class="bg-amber-400 text-slate-900 px-4 py-1.5 rounded-full text-xs font-black shadow-lg animate-pulse" id="teacher-badge-label">
-                                    👳‍♂️ الشيخ أحمد يشرح في الوسط أمام السبورة (مع الشرح الصوتي المباشر)
+                                    👳‍♂️ الشيخ أحمد يشرح في الوسط أمام السبورة (صوت مصري دافئ وواضح)
                                 </span>
                             </div>
 
@@ -250,8 +250,8 @@
                                 <div class="text-2xl md:text-3xl font-black text-white" id="classroom-main-text">تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
                                 <p class="text-xs text-emerald-200" id="classroom-desc">شرح أحكام النون الساكنة والتنوين والتدبر والتلاوة الصحيحة</p>
                                 
-                                <button onclick="playAudioExplanation('تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. يوضح الشيخ أحمد هنا عظمة الله عز وجل وقدرته المطلقة على كل شيء.')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-black text-xs px-5 py-2.5 rounded-xl shadow-lg transition inline-flex items-center gap-2">
-                                    <span>🔊</span> استمع لشرح المعلم الصوتي الآن
+                                <button onclick="playAudioExplanation('أهلاً بكم يا أبطال. صلوا على النبي صلى الله عليه وسلم. بنقول في سورة الملك: تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. معناها إن ربنا سبحانه وتعالى هو الملك العظيم القادر على كل شيء في الكون.')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-black text-xs px-5 py-2.5 rounded-xl shadow-lg transition inline-flex items-center gap-2">
+                                    <span>🔊</span> استمع لشرح الشيخ أحمد الصوتي المصري
                                 </button>
                             </div>
 
@@ -466,11 +466,12 @@
         let activeClassNum = '1/4';
         let studentSessionStart = Date.now();
 
+        // محرك الشرح الصوتي بلهجة مصرية واضحة
         function playAudioExplanation(textToSpeak) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(textToSpeak);
-                utterance.lang = 'ar-SA';
+                utterance.lang = 'ar-EG'; // لهجة مصرية واضحة للأطفال
                 utterance.rate = 0.9;
                 window.speechSynthesis.speak(utterance);
             } else {
@@ -597,7 +598,7 @@
 
         function closeBookViewer() { document.getElementById('book-viewer-modal').classList.add('hidden'); }
 
-        function sendWhatsappReportsModal() {
+        function openWhatsappReportsModal() {
             document.getElementById('whatsapp-reports-modal').classList.remove('hidden');
         }
 
@@ -640,7 +641,7 @@
         async function submitStudentAnswer() {
             const ansInput = document.getElementById('student-answer-input');
             if(ansInput && ansInput.value.trim() !== "") {
-                alert(`أحسنت! تم اعتماد الإجابة وحصولك على نجمة جديدة ⭐.`);
+                alert(`أحسنت يا بطل! تم اعتماد الإجابة وحصولك على نجمة جديدة ⭐.`);
                 ansInput.value = "";
             } else {
                 alert('الرجاء كتابة الإجابة أولاً.');
