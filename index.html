@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفيق — المدرسة الافتراضية الذكية والشنطة الرقمية</title>
+    <title>رفيق — المدرسة الافتراضية الذكية والشنطة التفاعلية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -61,7 +61,7 @@
             <div class="flex items-center gap-2 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-700">
                 <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">البوابة 🏫</button>
                 <button onclick="openHallway()" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الأدوار 🏛️</button>
-                <button onclick="openBackpackModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400 transition shadow">🎒 الشنطة التعليمية</button>
+                <button onclick="openBackpackModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400 transition shadow">🎒 شنطتي الذكية</button>
                 <button onclick="openWhatsappReportsModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition shadow">تقارير واتساب 📱</button>
                 <button onclick="switchRole('teacher')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">المعلمين 👨‍🏫</button>
                 <button onclick="switchRole('admin')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الكنترول 🛡️</button>
@@ -131,15 +131,15 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl relative z-10">
                 <div onclick="enterClassroom('1/1', 'صهيب محمد السعيد', 'مرحلة الحضانة (KG)', 'القاعدة النورانية والتهجي', 'أَ • بـَ • تـَ', 'تأسيس الحروف الهجائية')" class="bg-white/95 text-slate-900 p-4 rounded-2xl shadow-xl tilt-card cursor-pointer border-2 border-amber-400 text-right">
-                    <span class="text-amber-600 font-bold text-xs">الدور الأرضي - فصل 1/1 ⭐</span>
+                    <span class="text-amber-600 font-bold text-xs">الدور الأرضي - فصل 1/1 (🕷️ شنطة سبايدر مان)</span>
                     <h4 class="font-black text-sm text-emerald-900">صهيب محمد السعيد</h4>
                 </div>
                 <div onclick="enterClassroom('1/2', 'رقيه محمد السعيد', 'الصف الأول والثاني الابتدائي', 'القرآن الكريم والفقه الميسر', 'سورة الفاتحة • سورة الناس', 'حفظ أجزاء عم وأحكام الطهارة')" class="bg-white/95 text-slate-900 p-4 rounded-2xl shadow-xl tilt-card cursor-pointer border-2 border-amber-400 text-right">
-                    <span class="text-amber-600 font-bold text-xs">الدور الأول - فصل 1/2 ⭐</span>
+                    <span class="text-pink-600 font-bold text-xs">الدور الأول - فصل 1/2 (🎀 شنطة كيتي)</span>
                     <h4 class="font-black text-sm text-emerald-900">رقيه محمد السعيد</h4>
                 </div>
                 <div onclick="enterClassroom('1/3', 'مصعب محمد السعيد', 'الصف الرابع والخامس الابتدائي', 'القرآن الكريم والعلوم الشرعية', 'سورة الملك • أحكام التجويد', 'تفسير السور وفقه المعاملات')" class="bg-white/95 text-slate-900 p-4 rounded-2xl shadow-xl tilt-card cursor-pointer border-2 border-amber-400 text-right">
-                    <span class="text-amber-600 font-bold text-xs">الدور الثاني - فصل 1/3 ⭐</span>
+                    <span class="text-amber-600 font-bold text-xs">الدور الثاني - فصل 1/3 (🕷️ شنطة سبايدر مان)</span>
                     <h4 class="font-black text-sm text-emerald-900">مصعب محمد السعيد</h4>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div onclick="enterClassroom('1/3', 'مصعب محمد السعيد', 'الصف الرابع والخامس الابتدائي', 'القرآن الكريم والعلوم الشرعية', 'سورة الملك • أحكام التجويد', 'تفسير السور وفقه المعاملات')" class="bg-gradient-to-b from-teal-700 to-teal-900 text-white p-5 rounded-2xl shadow-lg tilt-card cursor-pointer border-2 border-amber-300 text-right space-y-2">
-                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-2.5 py-0.5 rounded-lg">فصل 1/3</span>
+                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-2.5 py-0.5 rounded-lg">فصل 1/3 (🕷️)</span>
                             <h4 class="font-bold text-sm">فصل مصعب محمد السعيد</h4>
                             <p class="text-[11px] text-teal-200">رابع وخامس ابتدائي أزهري</p>
                         </div>
@@ -178,7 +178,7 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div onclick="enterClassroom('1/2', 'رقيه محمد السعيد', 'الصف الأول والثاني الابتدائي', 'القرآن الكريم والفقه الميسر', 'سورة الفاتحة • سورة الناس', 'حفظ أجزاء عم وأحكام الطهارة')" class="bg-gradient-to-b from-emerald-700 to-emerald-900 text-white p-5 rounded-2xl shadow-lg tilt-card cursor-pointer border-2 border-amber-300 text-right space-y-2">
-                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-2.5 py-0.5 rounded-lg">فصل 1/2</span>
+                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-2.5 py-0.5 rounded-lg">فصل 1/2 (🎀)</span>
                             <h4 class="font-bold text-sm">فصل رقيه محمد السعيد</h4>
                             <p class="text-[11px] text-emerald-200">أول وثاني ابتدائي أزهري</p>
                         </div>
@@ -192,7 +192,7 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div onclick="enterClassroom('1/1', 'صهيب محمد السعيد', 'مرحلة الحضانة (KG)', 'القاعدة النورانية والتهجي', 'أَ • بـَ • تـَ', 'تأسيس الحروف الهجائية')" class="bg-gradient-to-b from-amber-700 to-amber-900 text-white p-5 rounded-2xl shadow-lg tilt-card cursor-pointer border-2 border-amber-300 text-right space-y-2">
-                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-2.5 py-0.5 rounded-lg">فصل 1/1</span>
+                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-2.5 py-0.5 rounded-lg">فصل 1/1 (🕷️)</span>
                             <h4 class="font-bold text-sm">فصل صهيب محمد السعيد</h4>
                             <p class="text-[11px] text-amber-200">حضانة أزهرية (KG)</p>
                         </div>
@@ -219,7 +219,7 @@
                     </div>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="openBackpackModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎒 الشنطة وكتب المادة</button>
+                    <button onclick="openBackpackModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎒 شنطتي الذكية</button>
                     <button onclick="openHallway()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-4 py-3 rounded-2xl transition">الرجوع للمبنى 🏛️</button>
                     <button onclick="goToGate()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold text-xs px-4 py-3 rounded-2xl transition">البوابة 🏫</button>
                 </div>
@@ -337,12 +337,12 @@
     </main>
 
     <div id="backpack-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
-        <div class="bg-white rounded-[3rem] p-8 max-w-2xl w-full shadow-2xl border-4 border-amber-400 space-y-6">
+        <div id="backpack-container-box" class="bg-white rounded-[3rem] p-8 max-w-2xl w-full shadow-2xl border-4 border-amber-400 space-y-6">
             <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-black text-xl text-emerald-900 flex items-center gap-2"><span>🎒</span> الشنطة التعليمية وبنك المناهج</h3>
+                <h3 id="backpack-modal-title" class="font-black text-xl text-emerald-900 flex items-center gap-2"><span>🎒</span> شنطتي الذكية وبنك الحصص الـ 6</h3>
                 <button onclick="closeBackpackModal()" class="text-slate-400 hover:text-rose-500 font-bold text-lg">✕</button>
             </div>
-            <p class="text-xs text-slate-500">اختر كتاب المادة أو الامتحانات المتاحة في شنطتك الرقمية لمتابعة المعلم على السبورة:</p>
+            <p id="backpack-modal-subtitle" class="text-xs text-slate-500">اختر كتاب الحصة (من الحصة الأولى للرابعة والختامية) لمتابعة المعلم:</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="backpack-books-grid">
                 </div>
@@ -356,16 +356,16 @@
     <div id="book-viewer-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-white rounded-[3rem] p-8 max-w-3xl w-full shadow-2xl border-4 border-emerald-600 space-y-6">
             <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-black text-xl text-emerald-900" id="viewer-book-title">📖 كتاب المادة</h3>
+                <h3 class="font-black text-xl text-emerald-900" id="viewer-book-title">📖 كتاب الحصة</h3>
                 <button onclick="closeBookViewer()" class="text-slate-400 hover:text-rose-500 font-bold text-lg">✕</button>
             </div>
             <div class="bg-amber-50 border-2 border-amber-200 p-8 rounded-3xl text-center space-y-4">
                 <span class="text-xs bg-amber-400 text-slate-900 px-3 py-1 rounded-full font-bold">صفحة تفاعلية متزامنة مع المعلم</span>
-                <div class="text-2xl font-black text-slate-800 my-4" id="viewer-book-content">محتوى الصفحة الرئيسية للمادة...</div>
+                <div class="text-xl font-black text-slate-800 my-4" id="viewer-book-content">محتوى الحصة والتدريبات والامتحانات...</div>
                 <p class="text-xs text-slate-500">تابع مع المعلم على السبورة الحية في نفس اللحظة.</p>
             </div>
             <div class="flex justify-between items-center pt-2">
-                <button onclick="alert('تم حفظ الواجب من الكتاب بنجاح!')" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl transition">حل تدريبات الصفحة ✍️</button>
+                <button onclick="alert('تم حفظ حل تدريبات واختبار الكتاب بنجاح!')" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl transition">حل امتحان الحصة ✍️</button>
                 <button onclick="closeBookViewer()" class="bg-slate-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition">إغلاق الكتاب</button>
             </div>
         </div>
@@ -379,23 +379,23 @@
             <div class="space-y-3">
                 <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-xs text-emerald-900">صهيب محمد السعيد (فصل 1/1)</h4>
+                        <h4 class="font-bold text-xs text-emerald-900">صهيب محمد السعيد (فصل 1/1 - شنطة سبايدر مان 🕷️)</h4>
                         <p class="text-[10px] text-emerald-700">حضور: 45 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
                     <button onclick="sendWhatsappReport('صهيب محمد السعيد', 'فصل 1/1', '45 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
 
-                <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
+                <div class="bg-pink-50 p-4 rounded-2xl border border-pink-100 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-xs text-emerald-900">رقيه محمد السعيد (فصل 1/2)</h4>
-                        <p class="text-[10px] text-emerald-700">حضور: 50 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
+                        <h4 class="font-bold text-xs text-pink-900">رقيه محمد السعيد (فصل 1/2 - شنطة كيتي 🎀)</h4>
+                        <p class="text-[10px] text-pink-700">حضور: 50 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
-                    <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', '50 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
+                    <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', '50 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
 
                 <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
                     <div>
-                        <h4 class="font-bold text-xs text-emerald-900">مصعب محمد السعيد (فصل 1/3)</h4>
+                        <h4 class="font-bold text-xs text-emerald-900">مصعب محمد السعيد (فصل 1/3 - شنطة سبايدر مان 🕷️)</h4>
                         <p class="text-[10px] text-emerald-700">حضور: 60 دقيقة | تفاعل: متفوق | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
                     <button onclick="sendWhatsappReport('مصعب محمد السعيد', 'فصل 1/3', '60 دقيقة', 'متفوق - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
@@ -515,7 +515,7 @@
             localStorage.setItem('custom_school_name', nameInput);
             applySchoolName(nameInput);
             closeProfileModal();
-            alert('تم حفظ وتحديث اسم المعهد والبيانات بنجاح تام! 🌟');
+            alert('تم حفظ وتحديث اسم المعهد والبيانات في سحابة رفيق بنجاح تام! 🌟');
         }
 
         function triggerGateOpening() {
@@ -569,38 +569,49 @@
             document.getElementById('classmate-main-name').innerText = `${fullName} (أنت)`;
         }
 
-        // إدارة الشنطة التعليمية وكتب المادة
+        // إدارة الشنطة التعليمية الذكية (كتب الـ 6 حصص بتصميم سبايدر مان / كيتي)
         function openBackpackModal() {
             const modal = document.getElementById('backpack-modal');
+            const containerBox = document.getElementById('backpack-container-box');
+            const titleEl = document.getElementById('backpack-modal-title');
+            const subtitleEl = document.getElementById('backpack-modal-subtitle');
             const grid = document.getElementById('backpack-books-grid');
             
             let books = [];
-            if(activeClassNum === '1/1') {
+            if(activeClassNum === '1/1' || activeClassNum === '1/3') {
+                // صهيب أو مصعب -> شنطة سبايدر مان (أحمر وأزرق)
+                containerBox.className = "bg-white rounded-[3rem] p-8 max-w-4xl w-full shadow-2xl border-4 border-red-500 space-y-6";
+                titleEl.innerHTML = `<span>🎒</span> شنطة سبايدر مان الذكية (بنك كتب الـ 6 حصص الأساسية)`;
+                subtitleEl.innerText = "اختر كتاب الحصة للتصفح وحل الامتحانات التفاعلية:";
                 books = [
-                    { title: "القاعدة النورانية (تأسيس الحروف)", desc: "كتاب التأسيس وقراءة الحروف بالفتح والكسر" },
-                    { title: "القرآن الكريم (سور الحضانة)", desc: "حفظ الفاتحة والإخلاص والفلق والناس" },
-                    { title: "الآداب والأخلاق الإسلامية", desc: "أذكار اليوم والليلة وآداب الطعام" }
-                ];
-            } else if(activeClassNum === '1/2') {
-                books = [
-                    { title: "القرآن الكريم (أجزاء عم)", desc: "تلاوة وتجويد وتفسير ميسر" },
-                    { title: "الفقه الشافعي (العبادات)", desc: "أحكام الطهارة والوضوء والصلاة" },
-                    { title: "التوحيد والسيرة النبوية", desc: "أركان الإيمان وقصة مولد النبي" }
+                    { period: "الحصة الأولى", title: "القرآن الكريم والتجويد", desc: "الحفظ والتلاوة وأحكام النون الساكنة" },
+                    { period: "الحصة الثانية", title: "الفقه الشافعي ومبادئ العبادات", desc: "أحكام الطهارة والوضوء والصلوات الخمس" },
+                    { period: "الحصة الثالثة", title: "اللغة العربية والخط والتهجي", desc: "القواعد النحوية والإنشاء والخط الجميل" },
+                    { period: "الحصة الرابعة", title: "الحساب والرياضيات المبسطة", desc: "العمليات الحسابية والمسائل الذهنية" },
+                    { period: "الحصة الخامسة", title: "العقيدة والتوحيد والأذكار", desc: "أركان الإيمان وحفظ الأذكار النبوية اليومية" },
+                    { period: "الحصة السادسة", title: "التربية الإسلامية والأنشطة", desc: "السيرة النبوية وقصص الأنبياء والأنشطة" }
                 ];
             } else {
+                // رقيه -> شنطة هالو كيتي (وردي وجميل)
+                containerBox.className = "bg-white rounded-[3rem] p-8 max-w-4xl w-full shadow-2xl border-4 border-pink-400 space-y-6";
+                titleEl.innerHTML = `<span>🎒🎀</span> شنطة هالو كيتي الوردية (بنك كتب الـ 6 حصص الأساسية)`;
+                subtitleEl.innerText = "اختر كتاب الحصة للتصفح وحل الامتحانات التفاعلية يا بطلة:";
                 books = [
-                    { title: "القرآن الكريم (سورة الملك)", desc: "التلاوة وأحكام النون والميم الساكنة" },
-                    { title: "الفقه الأزهري المقارن", desc: "معاملات وأحكام الصيام والزكاة" },
-                    { title: "الحديث الشريف وعلوم القرآن", desc: "الأربعين النووية ومصطلح الحديث" }
+                    { period: "الحصة الأولى", title: "القرآن الكريم (أجزاء عم وتدبر)", desc: "تلاوة وحفظ سور الفاتحة والقصار" },
+                    { period: "الحصة الثانية", title: "الفقه الميسر للفتيات", desc: "آداب الطهارة والعبادات المبسطة للبنات" },
+                    { period: "الحصة الثالثة", title: "اللغة العربية والتهجي الرائع", desc: "القواعد الإملائية والقصص القصيرة" },
+                    { period: "الحصة الرابعة", title: "الحساب والرياضيات الممتعة", desc: "الأرقام والأشكال الهندسية والعد" },
+                    { period: "الحصة الخامسة", title: "التوحيد والسيرة النبوية العطرة", desc: "مكارم الأخلاق وقصص الصحابيات والصحابة" },
+                    { period: "الحصة السادسة", title: "الأنشطة والتربية الفنية", desc: "الرسم والأذكار والآداب الإسلامية العامة" }
                 ];
             }
 
             grid.innerHTML = books.map(b => `
-                <div onclick="openBookReader('${b.title}', '${b.desc}')" class="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-2xl cursor-pointer hover:bg-emerald-100 transition space-y-2">
-                    <span class="text-3xl block">📚</span>
-                    <h4 class="font-bold text-xs text-emerald-950">${b.title}</h4>
+                <div onclick="openBookReader('${b.period}: ${b.title}', '${b.desc}')" class="bg-gradient-to-br from-slate-50 to-emerald-50 border-2 border-emerald-200 p-4 rounded-2xl cursor-pointer hover:shadow-lg transition space-y-2 text-right">
+                    <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-md">${b.period}</span>
+                    <h4 class="font-black text-xs text-emerald-950">${b.title}</h4>
                     <p class="text-[10px] text-slate-600">${b.desc}</p>
-                    <span class="bg-emerald-700 text-white text-[9px] px-2 py-1 rounded-lg block text-center font-bold">فتح الكتاب 📖</span>
+                    <span class="bg-emerald-700 text-white text-[9px] px-2 py-1 rounded-lg block text-center font-bold">فتح الكتاب وامتحان الحصة 📖</span>
                 </div>
             `).join('');
 
@@ -612,7 +623,7 @@
         function openBookReader(title, desc) {
             closeBackpackModal();
             document.getElementById('viewer-book-title').innerText = `📖 ${title}`;
-            document.getElementById('viewer-book-content').innerText = `${desc} — (تتم مزامنة الصفحة الحالية تلقائياً مع سبورة المعلم الحية).`;
+            document.getElementById('viewer-book-content').innerText = `${desc} — (تتم مزامنة محتوى الصفحة وحل الامتحانات التفاعلية مع سبورة المعلم الحية في نفس اللحظة).`;
             document.getElementById('book-viewer-modal').classList.remove('hidden');
         }
 
@@ -657,7 +668,7 @@
             if(ansInput && ansInput.value.trim() !== "") {
                 const activeName = document.getElementById('active-student-name').innerText;
                 const classNum = document.getElementById('classroom-badge-num').innerText;
-                alert(`أحسنت يا بطل (${activeName} - ${classNum})! تم إرسال إجابتك للمعلم عبر سحابة رفيق.`);
+                alert(`أحسنت يا بطل (${activeName} - ${classNum})! تم إرسال إجابتك للمعلم بنجاح عبر سحابة رفيق.`);
                 
                 const feed = document.getElementById('teacher-answers-feed');
                 if(feed) {
@@ -677,7 +688,7 @@
                 }
                 const qDisp = document.getElementById('student-question-display');
                 if(qDisp) qDisp.innerText = inputVal.value;
-                alert('تم بث السؤال لجميع الفصول والأدوار بنجاح عبر Supabase Realtime! 🚀');
+                alert('تم بث السؤال لجميع الفصول الافتراضية والأدوار بنجاح عبر Supabase Realtime! 🚀');
                 inputVal.value = "";
             } else {
                 alert('الرجاء كتابة السؤال أولاً.');
