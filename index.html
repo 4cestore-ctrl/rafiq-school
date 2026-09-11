@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفيق — منصة التعليم الذكي التفاعلية</title>
+    <title>رفيق — رفيقك نحو المعرفة ودليلك الآمن في التعليم الأزهري والعام</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
         
         .school-gate-container {
             perspective: 1400px;
-            background: linear-gradient(rgba(6, 78, 59, 0.9), rgba(2, 44, 34, 0.98)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=80');
+            background: linear-gradient(rgba(6, 78, 59, 0.92), rgba(2, 44, 34, 0.98)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=80');
             background-size: cover;
             background-position: center;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
@@ -36,29 +36,19 @@
             box-shadow: 0 25px 35px -10px rgba(5, 150, 105, 0.25);
             transform: translateY(-5px);
         }
-        .mini-map {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 2px solid #fbbf24;
-        }
-        .school-floor {
-            background: linear-gradient(to right, #ffffff, #f1f5f9);
-            border-right: 8px solid #059669;
-        }
-        /* أنماط الـ 12 تصميماً للشنط */
         .backpack-icon { width: 65px; height: 65px; border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 3px solid white; flex-shrink: 0; }
-        .bp-1 { background: #dc2626; color: white; } /* سبايدر مان */
-        .bp-2 { background: #ec4899; color: white; } /* هالو كيتي */
-        .bp-3 { background: #1e40af; color: white; } /* أزرق ملكي */
-        .bp-4 { background: #16a34a; color: white; } /* أخضر أزهري */
-        .bp-5 { background: #f59e0b; color: white; } /* أصفر ذهبي */
-        .bp-6 { background: #7e22ce; color: white; } /* بنفسجي */
-        .bp-7 { background: #0ea5e9; color: white; } /* أزرق سماوي */
-        .bp-8 { background: #9f1239; color: white; } /* أحمر غامق */
-        .bp-9 { background: #475569; color: white; } /* رصاصي */
-        .bp-10 { background: #a78bfa; color: white; } /* موف فاتح */
-        .bp-11 { background: #fcd34d; color: #111827; } /* أصفر زاهي */
-        .bp-12 { background: #111827; color: white; } /* أسود فخم */
+        .bp-1 { background: #dc2626; color: white; }
+        .bp-2 { background: #ec4899; color: white; }
+        .bp-3 { background: #1e40af; color: white; }
+        .bp-4 { background: #16a34a; color: white; }
+        .bp-5 { background: #f59e0b; color: white; }
+        .bp-6 { background: #7e22ce; color: white; }
+        .bp-7 { background: #0ea5e9; color: white; }
+        .bp-8 { background: #9f1239; color: white; }
+        .bp-9 { background: #475569; color: white; }
+        .bp-10 { background: #a78bfa; color: white; }
+        .bp-11 { background: #fcd34d; color: #111827; }
+        .bp-12 { background: #111827; color: white; }
     </style>
 </head>
 <body class="text-slate-800">
@@ -66,15 +56,17 @@
     <header class="bg-emerald-900 text-white shadow-xl sticky top-0 z-50 border-b-4 border-amber-400">
         <div class="container mx-auto px-4 py-2.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-amber-400 rounded-xl flex items-center justify-center shadow-md text-slate-900 font-black text-lg border border-white/40">🏫</div>
+                <div class="w-12 h-12 bg-gradient-to-tr from-amber-400 to-amber-200 rounded-2xl shadow-md flex items-center justify-center border-2 border-white/40 text-2xl font-black text-emerald-950">
+                    📖
+                </div>
                 <div>
                     <span class="text-lg font-black block leading-none text-amber-300">رفيق</span>
-                    <span class="text-[9px] text-emerald-200 font-bold">منصة التعليم الذكي</span>
+                    <span class="text-[9px] text-emerald-200 font-bold">رفيقك نحو المعرفة — دليلك الآمن والشيقة</span>
                 </div>
                 <span id="nav-status-badge" class="text-xs bg-emerald-950 px-3 py-1 rounded-xl border border-emerald-600 font-bold ml-2 hidden md:inline-block">بوابة المعهد الرئيسية 🌳</span>
             </div>
             <div class="flex items-center gap-2 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-700">
-                <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">بوابة المعهد 🏫</button>
+                <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">البوابة 🏫</button>
                 <button onclick="openHallway()" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الأدوار 🏛️</button>
                 <button onclick="openBackpackModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400 transition shadow">🎒 شنطتي الذكية</button>
                 <button onclick="openWhatsappReportsModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition shadow">تقارير واتساب 📱</button>
@@ -112,7 +104,7 @@
             </div>
         </div>
 
-        <div id="view-gate" class="school-gate-container rounded-[3rem] p-6 md:p-12 text-white shadow-2xl space-y-6 min-h-[85vh] flex flex-col justify-center items-center text-center relative overflow-hidden border-8 border-amber-400/40">
+        <div id="view-gate" class="school-gate-container rounded-[3rem] p-6 md:p-10 text-white shadow-2xl space-y-6 min-h-[85vh] flex flex-col justify-center items-center text-center relative overflow-hidden border-8 border-amber-400/40">
             
             <div class="absolute top-4 inset-x-4 flex justify-between items-center px-6 opacity-95">
                 <span class="bg-emerald-950/90 px-4 py-2 rounded-2xl text-xs font-bold border border-emerald-500 shadow">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span>
@@ -122,7 +114,7 @@
             <div class="space-y-2 mt-6 relative z-10">
                 <span class="bg-amber-400 text-slate-900 text-xs font-black px-4 py-1.5 rounded-full shadow-lg inline-block">ولي الأمر: محمد السعيد</span>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wide">بوابة معهد الأزهر الشريف الذكي</h1>
-                <p class="text-emerald-100 text-xs">اختر البوابة الرئيسية أو أبواب مرحلة الحضانة والصفوف الابتدائية:</p>
+                <p class="text-emerald-100 text-xs">رفيقك نحو المعرفة — اختر البوابة الرئيسية أو أبواب الحضانة والصفوف الابتدائية:</p>
             </div>
 
             <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-4 items-center relative z-10">
@@ -133,11 +125,11 @@
                     <p class="text-[10px] text-amber-100">تمهيدي وبراعم الأزهر</p>
                 </div>
 
-                <div class="lg:col-span-3 flex flex-col items-center justify-center space-y-3">
-                    <div class="relative w-48 h-64 bg-gradient-to-b from-amber-800 to-amber-950 rounded-t-[8rem] border-6 border-amber-400 shadow-2xl flex items-center justify-center cursor-pointer gate-door-3d" id="main-gate-door" onclick="triggerGateOpening()">
-                        <div class="absolute inset-3 border-2 border-dashed border-amber-400/40 rounded-t-[7rem] flex flex-col items-center justify-center space-y-2">
+                <div class="lg:col-span-3 flex flex-col items-center justify-center space-y-2">
+                    <div class="relative w-44 h-56 bg-gradient-to-b from-amber-800 to-amber-950 rounded-t-[7rem] border-6 border-amber-400 shadow-2xl flex items-center justify-center cursor-pointer gate-door-3d" id="main-gate-door" onclick="triggerGateOpening()">
+                        <div class="absolute inset-3 border-2 border-dashed border-amber-400/40 rounded-t-[6rem] flex flex-col items-center justify-center space-y-2">
                             <span class="text-3xl">🏫</span>
-                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-3 py-1.5 rounded-xl shadow-lg">البوابة الكبرى 🌟</span>
+                            <span class="bg-amber-400 text-slate-900 text-[10px] font-black px-3 py-1 rounded-xl shadow-lg">البوابة الكبرى 🌟</span>
                         </div>
                     </div>
                     <span class="text-[11px] text-emerald-200 font-bold">اضغط لفتح الباب الرئيسي للدخول</span>
@@ -151,7 +143,7 @@
 
             </div>
 
-            <div class="w-full max-w-5xl pt-4 border-t border-emerald-700/50 relative z-10 space-y-2">
+            <div class="w-full max-w-5xl pt-3 border-t border-emerald-700/50 relative z-10 space-y-2">
                 <span class="text-xs font-bold text-amber-300 block">فصول المرحلة الابتدائية الأزهرية (أبواب ملونة):</span>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
                     <div onclick="enterClassroom('1/1', 'صهيب محمد السعيد', 'الصف الأول الابتدائي', 'القرآن الكريم والتجويد الميسر', 'سورة الفاتحة • سورة الناس', 'حفظ السور القصيرة وتدريس التهجي')" class="bg-gradient-to-br from-emerald-600 to-emerald-800 p-3 rounded-2xl border-2 border-amber-300 shadow tilt-card cursor-pointer text-center">
@@ -639,7 +631,6 @@
             document.getElementById('classroom-desc').innerText = descText;
             document.getElementById('classmate-main-name').innerText = `${fullName} (أنت)`;
 
-            // تحديث أيقونة الشنطة داخل الفصل
             const displayEl = document.getElementById('student-backpack-display');
             if(displayEl) {
                 displayEl.className = `backpack-icon ${currentBackpackClass} shadow-lg`;
@@ -647,7 +638,6 @@
             }
         }
 
-        // إدارة الشنطة التعليمية الذكية (كتب الـ 6 حصص)
         function openBackpackModal() {
             const modal = document.getElementById('backpack-modal');
             const grid = document.getElementById('backpack-books-grid');
