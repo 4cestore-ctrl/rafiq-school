@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رفيق — المدرسة الافتراضية التفاعلية 3D</title>
+    <title>رفيق — المدرسة الافتراضية الذكية والشنطة الرقمية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -12,7 +12,6 @@
         .azhari-theme { background: linear-gradient(135deg, #065f46 0%, #047857 100%); color: #fff; }
         .general-theme { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #fff; }
         
-        /* بوابة المدرسة بلمسة 3D وتأثير العمق */
         .school-gate-container {
             perspective: 1400px;
             background: linear-gradient(rgba(6, 78, 59, 0.9), rgba(2, 44, 34, 0.98)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=80');
@@ -29,17 +28,13 @@
             transform: rotateY(-110deg) translateZ(20px);
             box-shadow: -30px 10px 50px rgba(0,0,0,0.6);
         }
-        
-        /* تأثير 3D Tilt التفاعلي للبطاقات والأدوار */
         .tilt-card {
             transition: transform 0.1s ease, box-shadow 0.3s ease;
             transform-style: preserve-3d;
-            will-change: transform;
         }
         .tilt-card:hover {
             box-shadow: 0 25px 35px -10px rgba(5, 150, 105, 0.25);
         }
-
         .mini-map {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -59,17 +54,17 @@
                 <div class="w-9 h-9 bg-amber-400 rounded-xl flex items-center justify-center shadow-md text-slate-900 font-black text-lg">🏫</div>
                 <div>
                     <span class="text-lg font-black block leading-none">رفيق</span>
-                    <span class="text-[9px] text-amber-300 font-bold">منصة التعليم الذكي</span>
+                    <span class="text-[9px] text-amber-300 font-bold">المدرسة الافتراضية الذكية</span>
                 </div>
                 <span id="nav-status-badge" class="text-xs bg-emerald-950 px-3 py-1 rounded-xl border border-emerald-600 font-bold ml-2 hidden md:inline-block">بوابة المدرسة الرئيسية 🌳</span>
             </div>
             <div class="flex items-center gap-2 bg-emerald-950/60 p-1.5 rounded-2xl border border-emerald-700">
                 <button onclick="goToGate()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 transition shadow">البوابة 🏫</button>
                 <button onclick="openHallway()" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الأدوار 🏛️</button>
+                <button onclick="openBackpackModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400 transition shadow">🎒 الشنطة التعليمية</button>
                 <button onclick="openWhatsappReportsModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition shadow">تقارير واتساب 📱</button>
                 <button onclick="switchRole('teacher')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">المعلمين 👨‍🏫</button>
                 <button onclick="switchRole('admin')" class="text-xs font-bold px-3 py-1.5 rounded-xl text-white hover:bg-emerald-800 transition">الكنترول 🛡️</button>
-                <button onclick="openProfileModal()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-500/80 text-slate-900 transition">الإعدادات ⚙️</button>
             </div>
         </div>
     </header>
@@ -162,7 +157,6 @@
             </div>
 
             <div class="space-y-6 max-w-4xl mx-auto">
-                
                 <div class="school-floor p-6 rounded-3xl shadow-sm border border-slate-200 space-y-3">
                     <div class="flex justify-between items-center border-b pb-2">
                         <h3 class="font-black text-sm text-emerald-900">🏢 الدور الثاني (المرحلة الابتدائية العليا)</h3>
@@ -204,26 +198,6 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 max-w-4xl mx-auto">
-                <div onclick="switchRole('teacher')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 text-center tilt-card cursor-pointer">
-                    <span class="text-2xl">👨‍🏫</span>
-                    <h4 class="font-bold text-xs text-slate-800 mt-1">غرفة المعلمين</h4>
-                </div>
-                <div onclick="switchRole('admin')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 text-center tilt-card cursor-pointer">
-                    <span class="text-2xl">🛡️</span>
-                    <h4 class="font-bold text-xs text-slate-800 mt-1">الكنترول المركزي</h4>
-                </div>
-                <div onclick="alert('المكتبة تزخر بالكتب الرقمية!')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 text-center tilt-card cursor-pointer">
-                    <span class="text-2xl">📚</span>
-                    <h4 class="font-bold text-xs text-slate-800 mt-1">المكتبة</h4>
-                </div>
-                <div onclick="alert('المصلى المركزي للأنشطة القرآنية!')" class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 text-center tilt-card cursor-pointer">
-                    <span class="text-2xl">🕌</span>
-                    <h4 class="font-bold text-xs text-slate-800 mt-1">المصلى</h4>
-                </div>
             </div>
         </div>
 
@@ -241,10 +215,11 @@
                             <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full" id="active-grade-display">حضانة أزهرية</span>
                         </div>
                         <p class="text-slate-500 text-xs mt-1">ولي الأمر: محمد السعيد | المعهد المسجل: <span id="student-school-display-tag" class="font-bold text-emerald-800">معهد نور الإسلام النموذجي بدمياط الجديدة</span></p>
-                        <p class="text-amber-600 text-xs mt-0.5 font-bold">🟢 واتساب ولي الأمر مفعل للتذكير والمتابعة</p>
+                        <p class="text-amber-600 text-xs mt-0.5 font-bold">🟢 واتساب ولي الأمر مفعل للتذكير والمتابعة والتقرير اليومي</p>
                     </div>
                 </div>
                 <div class="flex gap-2">
+                    <button onclick="openBackpackModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-3 rounded-2xl shadow transition">🎒 الشنطة وكتب المادة</button>
                     <button onclick="openHallway()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-4 py-3 rounded-2xl transition">الرجوع للمبنى 🏛️</button>
                     <button onclick="goToGate()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold text-xs px-4 py-3 rounded-2xl transition">البوابة 🏫</button>
                 </div>
@@ -272,10 +247,22 @@
                                 <button onclick="submitStudentAnswer()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2 rounded-xl shadow transition">إرسال الإجابة ✍️</button>
                             </div>
                         </div>
+
+                        <div class="mt-6 bg-slate-50 border border-slate-200 p-5 rounded-3xl space-y-3">
+                            <h4 class="font-bold text-sm text-slate-800 flex items-center gap-2"><span>💬</span> دردشة الفصل التفاعلية</h4>
+                            <div id="classroom-chat-box" class="h-36 overflow-y-auto bg-white p-3 rounded-2xl border border-slate-200 space-y-2 text-xs">
+                                <div class="text-slate-400 text-center">أهلاً بك في غرفة دردشة الفصل. ابدأ النقاش مع المعلم والزملاء!</div>
+                            </div>
+                            <div class="flex gap-2">
+                                <input type="text" id="chat-msg-input" placeholder="اكتب رسالة للزملاء والمعلم..." class="flex-1 border border-slate-300 rounded-xl px-3 py-2 text-xs bg-white">
+                                <button onclick="sendChatMessage()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl shadow transition">إرسال 🚀</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-emerald-100">
+                <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-emerald-100 space-y-4">
                     <h3 class="font-black text-base text-emerald-900 mb-4 flex justify-between items-center">
                         <span id="classmates-title">زملاء الفصل</span>
                         <span class="text-xs bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full font-bold">مقاعد نشطة</span>
@@ -288,6 +275,10 @@
                                 <span class="text-[10px] text-emerald-600">متصل الآن 🟢 (الحالة: نشط)</span>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100">
+                        <button onclick="endSchoolDayReport()" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-black text-xs py-3 rounded-2xl shadow-lg transition">🏁 إنهاء اليوم وإرسال تقرير ولي الأمر</button>
                     </div>
                 </div>
             </div>
@@ -345,34 +336,69 @@
 
     </main>
 
+    <div id="backpack-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-white rounded-[3rem] p-8 max-w-2xl w-full shadow-2xl border-4 border-amber-400 space-y-6">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-black text-xl text-emerald-900 flex items-center gap-2"><span>🎒</span> الشنطة التعليمية وبنك المناهج</h3>
+                <button onclick="closeBackpackModal()" class="text-slate-400 hover:text-rose-500 font-bold text-lg">✕</button>
+            </div>
+            <p class="text-xs text-slate-500">اختر كتاب المادة أو الامتحانات المتاحة في شنطتك الرقمية لمتابعة المعلم على السبورة:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="backpack-books-grid">
+                </div>
+
+            <div class="flex justify-end pt-2">
+                <button onclick="closeBackpackModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs px-5 py-2.5 rounded-xl transition">إغلاق الشنطة</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="book-viewer-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-white rounded-[3rem] p-8 max-w-3xl w-full shadow-2xl border-4 border-emerald-600 space-y-6">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-black text-xl text-emerald-900" id="viewer-book-title">📖 كتاب المادة</h3>
+                <button onclick="closeBookViewer()" class="text-slate-400 hover:text-rose-500 font-bold text-lg">✕</button>
+            </div>
+            <div class="bg-amber-50 border-2 border-amber-200 p-8 rounded-3xl text-center space-y-4">
+                <span class="text-xs bg-amber-400 text-slate-900 px-3 py-1 rounded-full font-bold">صفحة تفاعلية متزامنة مع المعلم</span>
+                <div class="text-2xl font-black text-slate-800 my-4" id="viewer-book-content">محتوى الصفحة الرئيسية للمادة...</div>
+                <p class="text-xs text-slate-500">تابع مع المعلم على السبورة الحية في نفس اللحظة.</p>
+            </div>
+            <div class="flex justify-between items-center pt-2">
+                <button onclick="alert('تم حفظ الواجب من الكتاب بنجاح!')" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl transition">حل تدريبات الصفحة ✍️</button>
+                <button onclick="closeBookViewer()" class="bg-slate-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition">إغلاق الكتاب</button>
+            </div>
+        </div>
+    </div>
+
     <div id="whatsapp-reports-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-white rounded-[3rem] p-6 max-w-xl w-full shadow-2xl border border-slate-200 space-y-4">
-            <h3 class="font-black text-xl text-emerald-900 border-r-4 border-amber-400 pr-3">تقارير واتساب الأسبوعية لأولياء الأمور</h3>
-            <p class="text-xs text-slate-500">يمكنك إرسال تقرير أسبوعي مباشر عن حضور ومستوى كل ابن عبر واتساب لولي الأمر (محمد السعيد):</p>
+            <h3 class="font-black text-xl text-emerald-900 border-r-4 border-amber-400 pr-3">التقارير اليومية والأسبوعية (واتساب لولي الأمر)</h3>
+            <p class="text-xs text-slate-500">تقرير الحضور، مدة الدقائق، ومتابعة الشاشة عبر واتساب للأستاذ/ محمد السعيد:</p>
             
             <div class="space-y-3">
                 <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
                     <div>
                         <h4 class="font-bold text-xs text-emerald-900">صهيب محمد السعيد (فصل 1/1)</h4>
-                        <p class="text-[10px] text-emerald-700">مستوى ممتاز في القاعدة النورانية وحفظ السور القصيرة.</p>
+                        <p class="text-[10px] text-emerald-700">حضور: 45 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
-                    <button onclick="sendWhatsappReport('صهيب محمد السعيد', 'فصل 1/1', 'مستوى ممتاز في القاعدة النورانية وحفظ السور القصيرة')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
+                    <button onclick="sendWhatsappReport('صهيب محمد السعيد', 'فصل 1/1', '45 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
 
                 <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
                     <div>
                         <h4 class="font-bold text-xs text-emerald-900">رقيه محمد السعيد (فصل 1/2)</h4>
-                        <p class="text-[10px] text-emerald-700">انتظام تام وحفظ ممتاز لسورة الفاتحة والناس.</p>
+                        <p class="text-[10px] text-emerald-700">حضور: 50 دقيقة | تفاعل: ممتاز | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
-                    <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', 'انتظام تام وحفظ ممتاز لسورة الفاتحة والناس')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
+                    <button onclick="sendWhatsappReport('رقيه محمد السعيد', 'فصل 1/2', '50 دقيقة', 'ممتاز - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
 
                 <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex justify-between items-center">
                     <div>
                         <h4 class="font-bold text-xs text-emerald-900">مصعب محمد السعيد (فصل 1/3)</h4>
-                        <p class="text-[10px] text-emerald-700">تفوق في أحكام التجويد والعلوم الشرعية.</p>
+                        <p class="text-[10px] text-emerald-700">حضور: 60 دقيقة | تفاعل: متفوق | حالة الشاشة: نشط طوال الحصة.</p>
                     </div>
-                    <button onclick="sendWhatsappReport('مصعب محمد السعيد', 'فصل 1/3', 'تفوق في أحكام التجويد والعلوم الشرعية')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
+                    <button onclick="sendWhatsappReport('مصعب محمد السعيد', 'فصل 1/3', '60 دقيقة', 'متفوق - تفاعل نشط')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl shadow transition">إرسال للواتساب 📱</button>
                 </div>
             </div>
 
@@ -408,6 +434,9 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZydGR5dHBodnhicmp1dnJ6dXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwNzMyMDQsImV4cCI6MjEwNDY0OTIwNH0.JwbdvOwLApjImRTUkKe4BAxwj2lGTMuYidIH3iiIVys';
         
         let supabaseClient = null;
+        let activeClassNum = '1/1';
+        let studentSessionStart = Date.now();
+
         try {
             if (typeof supabase !== 'undefined') {
                 supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -420,7 +449,6 @@
             }
         } catch(e) { console.log('وضع التشغيل المحلي نشط'); }
 
-        // التحقق من اسم المعهد المخصص واختيار المؤسسة عند أول دخول
         window.addEventListener('DOMContentLoaded', () => {
             const savedInst = localStorage.getItem('school_institution');
             const savedSchoolName = localStorage.getItem('custom_school_name');
@@ -430,8 +458,6 @@
             } else {
                 applySchoolName(savedSchoolName || "معهد نور الإسلام النموذجي بدمياط الجديدة");
             }
-
-            // تطبيق تأثير 3D Tilt الخفيف على الكروت والأدوار
             initTiltEffect();
         });
 
@@ -473,25 +499,14 @@
             if(modalInput) modalInput.value = name;
         }
 
-        function openProfileModal() {
-            document.getElementById('profile-modal').classList.remove('hidden');
-        }
+        function openProfileModal() { document.getElementById('profile-modal').classList.remove('hidden'); }
+        function closeProfileModal() { document.getElementById('profile-modal').classList.add('hidden'); }
+        function openWhatsappReportsModal() { document.getElementById('whatsapp-reports-modal').classList.remove('hidden'); }
+        function closeWhatsappReportsModal() { document.getElementById('whatsapp-reports-modal').classList.add('hidden'); }
 
-        function closeProfileModal() {
-            document.getElementById('profile-modal').classList.add('hidden');
-        }
-
-        function openWhatsappReportsModal() {
-            document.getElementById('whatsapp-reports-modal').classList.remove('hidden');
-        }
-
-        function closeWhatsappReportsModal() {
-            document.getElementById('whatsapp-reports-modal').classList.add('hidden');
-        }
-
-        function sendWhatsappReport(studentName, classNum, notes) {
+        function sendWhatsappReport(studentName, classNum, minutes, status) {
             const schoolName = localStorage.getItem('custom_school_name') || "معهد نور الإسلام النموذجي بدمياط الجديدة";
-            const message = `السلام عليكم ورحمة الله وبركاته، ولي الأمر الفاضل الأستاذ/ محمد السعيد.%0aإليك التقرير الأسبوعي للطالب(ة): *${studentName}* (${classNum}) في ${schoolName}:%0a📝 ${notes}%0a🌟 المستوى العام: ممتاز ومستمر في التقدم.%0aمع تحيات إدارة المدرسة ونسأل الله التوفيق.`;
+            const message = `السلام عليكم ورحمة الله، ولي الأمر الفاضل الأستاذ/ محمد السعيد.%0a📊 *التقرير اليومي للمدرسة الافتراضية* في ${schoolName}:%0a👤 الطالب(ة): *${studentName}* (${classNum})%0a⏱️ مدة الحضور الفعلي: ${minutes}%0a👁️ حالة الشاشة والمتابعة: نشط ويتابع الحصص بانتظام ✅%0a🌟 مستوى التفاعل: ${status}%0aمع تحيات إدارة المدرسة.`;
             window.open(`https://wa.me/201012345678?text=${message}`, '_blank');
         }
 
@@ -500,10 +515,9 @@
             localStorage.setItem('custom_school_name', nameInput);
             applySchoolName(nameInput);
             closeProfileModal();
-            alert('تم حفظ وتحديث اسم المعهد والبيانات في سحابة رفيق بنجاح تام! 🌟');
+            alert('تم حفظ وتحديث اسم المعهد والبيانات بنجاح تام! 🌟');
         }
 
-        // تفاعل فتح الباب السينمائي
         function triggerGateOpening() {
             const door = document.getElementById('main-gate-door');
             if(door) {
@@ -525,67 +539,116 @@
 
         function goToGate() {
             hideAllViews();
-            const gate = document.getElementById('view-gate');
-            if(gate) gate.classList.remove('hidden');
-            const badge = document.getElementById('nav-status-badge');
-            if(badge) badge.innerText = "بوابة المدرسة الرئيسية 🌳";
+            document.getElementById('view-gate').classList.remove('hidden');
+            document.getElementById('nav-status-badge').innerText = "بوابة المدرسة الرئيسية 🌳";
             setTimeout(initTiltEffect, 100);
         }
 
         function openHallway() {
             hideAllViews();
-            const hallway = document.getElementById('view-hallway');
-            if(hallway) hallway.classList.remove('hidden');
-            const badge = document.getElementById('nav-status-badge');
-            if(badge) badge.innerText = "مبنى الأدوار 🏛️";
+            document.getElementById('view-hallway').classList.remove('hidden');
+            document.getElementById('nav-status-badge').innerText = "مبنى الأدوار 🏛️";
             setTimeout(initTiltEffect, 100);
         }
 
         function enterClassroom(classNum, fullName, gradeText, subText, mainText, descText) {
             hideAllViews();
-            const classroom = document.getElementById('view-classroom');
-            if(classroom) classroom.classList.remove('hidden');
+            activeClassNum = classNum;
+            studentSessionStart = Date.now();
             
-            const nameEl = document.getElementById('active-student-name');
-            if(nameEl) nameEl.innerText = fullName;
-            
-            const gradeEl = document.getElementById('active-grade-display');
-            if(gradeEl) gradeEl.innerText = gradeText;
-            
-            const badgeNum = document.getElementById('classroom-badge-num');
-            if(badgeNum) badgeNum.innerText = `فصل ${classNum}`;
-            
-            const boardTag = document.getElementById('board-class-tag');
-            if(boardTag) boardTag.innerText = `فصل ${classNum} 🟢`;
-            
-            const navBadge = document.getElementById('nav-status-badge');
-            if(navBadge) navBadge.innerText = `داخل فصل ${classNum} : ${fullName}`;
+            document.getElementById('view-classroom').classList.remove('hidden');
+            document.getElementById('active-student-name').innerText = fullName;
+            document.getElementById('active-grade-display').innerText = gradeText;
+            document.getElementById('classroom-badge-num').innerText = `فصل ${classNum}`;
+            document.getElementById('board-class-tag').innerText = `فصل ${classNum} 🟢`;
+            document.getElementById('nav-status-badge').innerText = `داخل فصل ${classNum} : ${fullName}`;
 
-            const subEl = document.getElementById('classroom-sub');
-            if(subEl) subEl.innerText = subText;
-            
-            const mainEl = document.getElementById('classroom-main-text');
-            if(mainEl) mainEl.innerText = mainText;
-            
-            const descEl = document.getElementById('classroom-desc');
-            if(descEl) descEl.innerText = descText;
+            document.getElementById('classroom-sub').innerText = subText;
+            document.getElementById('classroom-main-text').innerText = mainText;
+            document.getElementById('classroom-desc').innerText = descText;
+            document.getElementById('classmate-main-name').innerText = `${fullName} (أنت)`;
+        }
 
-            const cName = document.getElementById('classmate-main-name');
-            if(cName) cName.innerText = `${fullName} (أنت)`;
+        // إدارة الشنطة التعليمية وكتب المادة
+        function openBackpackModal() {
+            const modal = document.getElementById('backpack-modal');
+            const grid = document.getElementById('backpack-books-grid');
+            
+            let books = [];
+            if(activeClassNum === '1/1') {
+                books = [
+                    { title: "القاعدة النورانية (تأسيس الحروف)", desc: "كتاب التأسيس وقراءة الحروف بالفتح والكسر" },
+                    { title: "القرآن الكريم (سور الحضانة)", desc: "حفظ الفاتحة والإخلاص والفلق والناس" },
+                    { title: "الآداب والأخلاق الإسلامية", desc: "أذكار اليوم والليلة وآداب الطعام" }
+                ];
+            } else if(activeClassNum === '1/2') {
+                books = [
+                    { title: "القرآن الكريم (أجزاء عم)", desc: "تلاوة وتجويد وتفسير ميسر" },
+                    { title: "الفقه الشافعي (العبادات)", desc: "أحكام الطهارة والوضوء والصلاة" },
+                    { title: "التوحيد والسيرة النبوية", desc: "أركان الإيمان وقصة مولد النبي" }
+                ];
+            } else {
+                books = [
+                    { title: "القرآن الكريم (سورة الملك)", desc: "التلاوة وأحكام النون والميم الساكنة" },
+                    { title: "الفقه الأزهري المقارن", desc: "معاملات وأحكام الصيام والزكاة" },
+                    { title: "الحديث الشريف وعلوم القرآن", desc: "الأربعين النووية ومصطلح الحديث" }
+                ];
+            }
+
+            grid.innerHTML = books.map(b => `
+                <div onclick="openBookReader('${b.title}', '${b.desc}')" class="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-2xl cursor-pointer hover:bg-emerald-100 transition space-y-2">
+                    <span class="text-3xl block">📚</span>
+                    <h4 class="font-bold text-xs text-emerald-950">${b.title}</h4>
+                    <p class="text-[10px] text-slate-600">${b.desc}</p>
+                    <span class="bg-emerald-700 text-white text-[9px] px-2 py-1 rounded-lg block text-center font-bold">فتح الكتاب 📖</span>
+                </div>
+            `).join('');
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeBackpackModal() { document.getElementById('backpack-modal').classList.add('hidden'); }
+
+        function openBookReader(title, desc) {
+            closeBackpackModal();
+            document.getElementById('viewer-book-title').innerText = `📖 ${title}`;
+            document.getElementById('viewer-book-content').innerText = `${desc} — (تتم مزامنة الصفحة الحالية تلقائياً مع سبورة المعلم الحية).`;
+            document.getElementById('book-viewer-modal').classList.remove('hidden');
+        }
+
+        function closeBookViewer() { document.getElementById('book-viewer-modal').classList.add('hidden'); }
+
+        // نظام الدردشة داخل الفصل
+        function sendChatMessage() {
+            const input = document.getElementById('chat-msg-input');
+            const chatBox = document.getElementById('classroom-chat-box');
+            if(input && input.value.trim() !== "") {
+                const studentName = document.getElementById('active-student-name').innerText;
+                chatBox.innerHTML += `<div class="p-2 bg-emerald-50 rounded-xl"><span class="font-bold text-emerald-900">${studentName}:</span> ${input.value}</div>`;
+                input.value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        // إنهاء اليوم الدراسي وإرسال التقرير لولي الأمر تلقائياً عبر واتساب
+        function endSchoolDayReport() {
+            const minutes = Math.round((Date.now() - studentSessionStart) / 60000) || 45;
+            const studentName = document.getElementById('active-student-name').innerText;
+            const classNum = document.getElementById('classroom-badge-num').innerText;
+            
+            alert(`تم إنهاء اليوم الدراسي بنجاح! سيتم الآن إرسال تقرير حضور البطل (${minutes} دقيقة) إلى ولي الأمر عبر واتساب.`);
+            sendWhatsappReport(studentName, classNum, `${minutes} دقيقة`, 'ممتاز - حضور كامل ومتابعة للسبورة');
+            goToGate();
         }
 
         function switchRole(role) {
             hideAllViews();
             if(role === 'teacher') {
-                const teacherView = document.getElementById('view-teacher');
-                if(teacherView) teacherView.classList.remove('hidden');
-                const badge = document.getElementById('nav-status-badge');
-                if(badge) badge.innerText = "غرفة المعلمين الافتراضية";
+                document.getElementById('view-teacher').classList.remove('hidden');
+                document.getElementById('nav-status-badge').innerText = "غرفة المعلمين الافتراضية";
             } else if(role === 'admin') {
-                const adminView = document.getElementById('view-admin');
-                if(adminView) adminView.classList.remove('hidden');
-                const badge = document.getElementById('nav-status-badge');
-                if(badge) badge.innerText = "الكنترول المركزي";
+                document.getElementById('view-admin').classList.remove('hidden');
+                document.getElementById('nav-status-badge').innerText = "الكنترول المركزي";
             }
         }
 
@@ -594,7 +657,7 @@
             if(ansInput && ansInput.value.trim() !== "") {
                 const activeName = document.getElementById('active-student-name').innerText;
                 const classNum = document.getElementById('classroom-badge-num').innerText;
-                alert(`أحسنت يا بطل (${activeName} - ${classNum})! تم إرسال إجابتك للمعلم بنجاح عبر سحابة رفيق.`);
+                alert(`أحسنت يا بطل (${activeName} - ${classNum})! تم إرسال إجابتك للمعلم عبر سحابة رفيق.`);
                 
                 const feed = document.getElementById('teacher-answers-feed');
                 if(feed) {
@@ -614,7 +677,7 @@
                 }
                 const qDisp = document.getElementById('student-question-display');
                 if(qDisp) qDisp.innerText = inputVal.value;
-                alert('تم بث السؤال لجميع الفصول الافتراضية والأدوار بنجاح عبر Supabase Realtime! 🚀');
+                alert('تم بث السؤال لجميع الفصول والأدوار بنجاح عبر Supabase Realtime! 🚀');
                 inputVal.value = "";
             } else {
                 alert('الرجاء كتابة السؤال أولاً.');
